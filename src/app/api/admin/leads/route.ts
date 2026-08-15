@@ -7,6 +7,10 @@ const dbConfig = {
   user: process.env.DB_USER || 'u486119168_hopla_app1',
   password: process.env.DB_PASSWORD || '',
   database: process.env.DB_NAME || 'u486119168_hopla_app',
+  port: Number(process.env.DB_PORT || 3306),
+  ssl: {
+    rejectUnauthorized: false,
+  },
 };
 
 export async function GET() {
@@ -19,8 +23,9 @@ export async function GET() {
     );
     
     return NextResponse.json({ leads: rows });
-  } catch (error) {
-    console.error('Erreur chargement leads:', error);
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : 'Erreur inconnue';
+    console.error('Erreur chargement leads:', message);
     return NextResponse.json({ error: 'Impossible de charger les leads.' }, { status: 500 });
   } finally {
     if (connection) await connection.end();

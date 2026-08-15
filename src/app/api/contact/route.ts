@@ -10,6 +10,9 @@ const dbConfig = {
   password: process.env.DB_PASSWORD || '',
   database: process.env.DB_NAME || 'u486119168_hopla_app',
   port: Number(process.env.DB_PORT || 3306),
+  ssl: {
+    rejectUnauthorized: false,
+  },
 };
 
 export async function POST(request: NextRequest) {
@@ -37,9 +40,16 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ success: true, id: result.insertId }, { status: 201 });
   } catch (error: unknown) {
-    console.error('Erreur insertion lead:', error);
+    const message = error instanceof Error ? error.message : 'Erreur inconnue';
+    console.error('Erreur insertion lead:', message);
+
     return NextResponse.json(
-      { error: 'Erreur lors de l\'envoi. Veuillez réessayer.' },
+      {
+        error:
+          process.env.NODE_ENV !== 'production'
+            ? `Erreur DB: ${message}`
+            : 'Erreur lors de l\'envoi. Veuillez réessayer.',
+      },
       { status: 500 }
     );
   } finally {
