@@ -1,14 +1,14 @@
 // src/app/contact/page.tsx - VERSION CORRIGÉE (SANS DOUBLON HEADER/FOOTER)
 'use client';
 
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 
-export default function ContactPage() {
+function ContactForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  
+
   // Pré-remplir la solution si elle vient de l'URL (?solution=gestion-locative)
   const defaultSolution = searchParams.get('solution') || '';
 
@@ -64,7 +64,6 @@ export default function ContactPage() {
   };
 
   return (
-    // Suppression de min-h-screen flex flex-col car le layout gère déjà la structure globale
     <section className="py-16 md:py-24 px-4">
       <div className="container mx-auto max-w-3xl">
         <div className="text-center mb-8 md:mb-12">
@@ -241,5 +240,13 @@ export default function ContactPage() {
         </form>
       </div>
     </section>
+  );
+}
+
+export default function ContactPage() {
+  return (
+    <Suspense fallback={<section className="py-16 md:py-24 px-4 text-center">Chargement...</section>}>
+      <ContactForm />
+    </Suspense>
   );
 }
