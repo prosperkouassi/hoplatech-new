@@ -1,16 +1,17 @@
 // next.config.ts
 import type { NextConfig } from "next";
+import path from "path";
 
 const nextConfig: NextConfig = {
-  // Next.js 16 active Turbopack par défaut en dev.
-  // Cette config vide évite le conflit avec la config webpack déjà présente.
+  // ✅ Configuration minimale pour Turbopack en dev
   turbopack: {},
-
-  // ✅ Force Webpack en production (utile si tu veux garder cette config)
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      // Configuration client si nécessaire
-    }
+  
+  // ✅ Résolution explicite des alias @/ pour Webpack en prod
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': path.join(__dirname, 'src'),
+    };
     return config;
   },
 };
