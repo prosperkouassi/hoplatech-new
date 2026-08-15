@@ -2,7 +2,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Aucune configuration spéciale nécessaire pour Webpack + Tailwind v4
+  // ✅ Désactiver Turbopack en production via l'option expérimentale valide
+  experimental: {
+    turbo: false,
+  },
 };
 
 export default nextConfig;
