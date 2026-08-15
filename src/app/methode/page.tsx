@@ -3,7 +3,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Notre Méthode - HoplaTech",
+  title: "Notre Méthode - Alteractweb",
   description: "Découvrez notre approche unique de développement logiciel adaptée aux réalités du marché africain.",
 };
 

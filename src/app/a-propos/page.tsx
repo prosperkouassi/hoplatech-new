@@ -3,8 +3,8 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "À Propos de HoplaTech",
-  description: "HoplaTech est une entreprise technologique ivoirienne spécialisée dans les solutions logicielles métiers pour l'Afrique.",
+  title: "À Propos de Alteractweb",
+  description: "Alteractweb est une entreprise technologique ivoirienne spécialisée dans les solutions logicielles métiers pour l'Afrique.",
 };
 
 export default function AproposPage() {
@@ -12,12 +12,12 @@ export default function AproposPage() {
     <section className="py-20 px-4">
       <div className="container mx-auto max-w-4xl">
         <h1 className="text-4xl md:text-5xl font-bold font-urbanist mb-8 text-center text-brand-dark dark:text-white">
-          À Propos de <span className="text-brand-primary">HoplaTech</span>
+          À Propos de <span className="text-brand-primary">Alteractweb</span>
         </h1>
         
         <div className="prose prose-lg dark:prose-invert max-w-none font-kanit text-gray-700 dark:text-gray-300 space-y-6">
           <p className="text-lg leading-relaxed">
-            Fondée en Côte d'Ivoire, HoplaTech est née d'une conviction simple : les entreprises africaines méritent des outils numériques conçus pour leur réalité, et non des adaptations de solutions occidentales inadaptées.
+            Fondée en Côte d'Ivoire, Alteractweb est née d'une conviction simple : les entreprises africaines méritent des outils numériques conçus pour leur réalité, et non des adaptations de solutions occidentales inadaptées.
           </p>
           
           <p className="leading-relaxed">

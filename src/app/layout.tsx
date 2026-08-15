@@ -4,8 +4,8 @@ import "./globals.css";
 import Header from "@/components/Header";
 
 export const metadata: Metadata = {
-  title: "HoplaTech - Logiciels Métiers & SaaS en Côte d'Ivoire",
-  description: "Solutions de gestion locative, scolaire et développement sur mesure.",
+  title: "AlteractWeb - Solutions Web & Digital",
+  description: "Agence web spécialisée dans le développement de solutions digitales sur mesure, sites vitrines et applications métiers.",
 };
 
 export default function RootLayout({
@@ -21,7 +21,7 @@ export default function RootLayout({
           {children}
         </main>
         <footer className="py-8 border-t border-gray-200 dark:border-gray-800 text-center text-sm text-gray-500 dark:text-gray-400 font-kanit">
-          &copy; {new Date().getFullYear()} HoplaTech. Tous droits réservés.
+          &copy; {new Date().getFullYear()} AlteractWeb. Tous droits réservés.
         </footer>
       </body>
     </html>

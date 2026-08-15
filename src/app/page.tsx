@@ -4,7 +4,7 @@ import { solutions } from '@/data/solutions';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "HoplaTech - Logiciels Métiers & SaaS en Côte d'Ivoire",
+  title: "Alteractweb - Logiciels Métiers & SaaS en Côte d'Ivoire",
   description: "Solutions de gestion locative, scolaire et développement sur mesure. Digitalisez votre activité avec des logiciels pensés pour la réalité africaine.",
 };
 
@@ -27,7 +27,7 @@ export default function HomePage() {
           </h1>
           
           <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-10 font-kanit font-light leading-relaxed max-w-2xl mx-auto">
-            HoplaTech conçoit des logiciels accessibles, pensés pour la réalité des entreprises en Côte d'Ivoire. Immobilier, Éducation, Associations.
+            Alteractweb conçoit des logiciels accessibles, pensés pour la réalité des entreprises en Côte d'Ivoire. Immobilier, Éducation, Associations.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

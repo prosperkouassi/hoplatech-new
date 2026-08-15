@@ -72,7 +72,7 @@ export default function ContactPage() {
             PARLONS DE VOTRE PROJET
           </span>
           <h1 className="text-3xl md:text-5xl font-bold font-urbanist mb-4 text-brand-dark dark:text-white">
-            Contactez <span className="text-brand-primary">HoplaTech</span>
+            Contactez <span className="text-brand-primary">Alteractweb</span>
           </h1>
           <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 font-kanit">
             Une question sur nos solutions SaaS ? Remplissez le formulaire ci-dessous et notre équipe vous répondra sous 24h ouvrées.
@@ -222,7 +222,7 @@ export default function ContactPage() {
               className="mt-1 w-5 h-5 rounded border-gray-300 text-brand-primary focus:ring-brand-primary cursor-pointer accent-brand-primary"
             />
             <label htmlFor="consent" className="text-sm text-gray-600 dark:text-gray-400 font-kanit leading-relaxed cursor-pointer">
-              J'accepte la <Link href="/politique-confidentialite" className="text-brand-primary hover:underline">politique de confidentialité</Link> et j'autorise HoplaTech à me recontacter concernant ma demande. *
+              J'accepte la <Link href="/politique-confidentialite" className="text-brand-primary hover:underline">politique de confidentialité</Link> et j'autorise Alteractweb à me recontacter concernant ma demande. *
             </label>
           </div>
 
