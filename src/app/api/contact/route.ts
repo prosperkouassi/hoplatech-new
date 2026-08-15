@@ -7,6 +7,7 @@ const dbConfig = {
   user: process.env.DB_USER || 'u486119168_hopla_app1',
   password: process.env.DB_PASSWORD || '',
   database: process.env.DB_NAME || 'u486119168_hopla_app',
+  port: 3306,
 };
 
 export async function POST(request: NextRequest) {
