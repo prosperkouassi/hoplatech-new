@@ -16,7 +16,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function GestionScolairePage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const panelsRef = useRef<HTMLDivElement[]>([]);
+  const panelsRef = useRef<Array<HTMLDivElement | null>>([]);
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -26,7 +26,7 @@ export default function GestionScolairePage() {
     const isMobile = window.matchMedia('(max-width: 768px)').matches;
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const scrollContainer = scrollContainerRef.current;
-    const panels = panelsRef.current.filter((panel): panel is HTMLDivElement => Boolean(panel));
+    const panels = panelsRef.current.filter((panel): panel is HTMLDivElement => panel !== null);
 
     if (isMobile || prefersReducedMotion || !scrollContainer || panels.length < 2) {
       return;
@@ -135,7 +135,7 @@ export default function GestionScolairePage() {
         <div ref={containerRef} className="flex h-full w-[200vw]">
           
           {/* PANNEAU 1 : PRÉSENTATION */}
-          <div ref={el => panelsRef.current[0] = el!} className="w-screen h-full flex-shrink-0 flex items-center justify-center px-4">
+          <div ref={(el) => { panelsRef.current[0] = el; }} className="w-screen h-full flex-shrink-0 flex items-center justify-center px-4">
             <div className="container mx-auto max-w-5xl grid md:grid-cols-2 gap-16 items-center">
               <div className="space-y-6">
                 <h2 className="text-2xl md:text-4xl font-bold font-urbanist">Une gestion scolaire plus claire, plus rapide et mieux organisée</h2>
@@ -176,7 +176,7 @@ export default function GestionScolairePage() {
           </div>
 
           {/* PANNEAU 2 : FONCTIONNALITÉS CLÉS (4 BLOCS MAX) */}
-          <div ref={el => panelsRef.current[1] = el!} className="w-screen h-full flex-shrink-0 flex items-center justify-center px-4">
+          <div ref={(el) => { panelsRef.current[1] = el; }} className="w-screen h-full flex-shrink-0 flex items-center justify-center px-4">
             <div className="container mx-auto max-w-6xl">
               <h2 className="text-2xl md:text-4xl font-bold font-urbanist mb-12 text-center">Tous les outils essentiels pour piloter votre établissement</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
