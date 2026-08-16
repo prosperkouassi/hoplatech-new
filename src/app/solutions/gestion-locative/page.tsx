@@ -198,7 +198,7 @@ export default function GestionLocativePage() {
         <div className="container mx-auto max-w-5xl text-center space-y-16">
           <div className="space-y-4">
             <h2 className="text-2xl md:text-4xl font-bold font-urbanist">Concentrez-vous sur votre patrimoine immobilier</h2>
-            <p className="text-lg text-gray-700 dark:text-gray-300 font-kanit">Des propriétés bien gérées, c'est une tranquillité d'esprit et un retour sur investissement optimisé.</p>
+            <p className="text-lg text-gray-700 dark:text-gray-300 font-kanit">Des propriétés bien gérées, c&apos;est une tranquillité d&apos;esprit et un retour sur investissement optimisé.</p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
@@ -244,8 +244,8 @@ export default function GestionLocativePage() {
       {/* --- CTA FINAL --- */}
       <section className="py-24 px-4 bg-brand-primary text-white">
         <div className="container mx-auto max-w-4xl text-center space-y-8">
-          <h2 className="text-3xl md:text-5xl font-bold font-urbanist">Simplifiez la gestion de votre patrimoine immobilier dès aujourd'hui</h2>
-          <p className="text-xl font-kanit opacity-90">Gagnez du temps sur l'administration et consacrez plus d'énergie au développement de votre patrimoine.</p>
+          <h2 className="text-3xl md:text-5xl font-bold font-urbanist">Simplifiez la gestion de votre patrimoine immobilier dès aujourd&apos;hui</h2>
+          <p className="text-xl font-kanit opacity-90">Gagnez du temps sur l&apos;administration et consacrez plus d&apos;énergie au développement de votre patrimoine.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <a
               href="https://wa.me/2250714074124?text=Bonjour%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20votre%20solution%20de%20gestion%20locative."
@@ -268,7 +268,7 @@ export default function GestionLocativePage() {
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div className="space-y-4">
               <h3 className="text-xl font-bold font-urbanist">AlteractWeb</h3>
-              <p className="text-sm text-gray-400 font-kanit">Solutions logicielles métiers pour la gestion immobilière en Côte d'Ivoire.</p>
+              <p className="text-sm text-gray-400 font-kanit">Solutions logicielles métiers pour la gestion immobilière en Côte d&apos;Ivoire.</p>
             </div>
             
             <div>

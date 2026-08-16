@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { 
-  Users, FileText, GraduationCap, Clock, PlusCircle,
+  Users, FileText, GraduationCap, PlusCircle,
   CheckCircle2, ArrowRight, PlayCircle
 } from 'lucide-react';
 
@@ -140,7 +140,7 @@ export default function GestionScolairePage() {
               <div className="space-y-6">
                 <h2 className="text-2xl md:text-4xl font-bold font-urbanist">Une gestion scolaire plus claire, plus rapide et mieux organisée</h2>
                 <p className="text-lg text-gray-700 dark:text-gray-300 font-kanit leading-relaxed">
-                  La gestion d'un établissement scolaire implique de nombreuses tâches : inscrire les élèves, suivre les absences, saisir les notes, organiser les emplois du temps, gérer les paiements et communiquer avec les familles. Notre logiciel rassemble toutes ces informations dans un espace unique afin de réduire les tâches manuelles et de faciliter le travail des équipes.
+                  La gestion d&apos;un établissement scolaire implique de nombreuses tâches : inscrire les élèves, suivre les absences, saisir les notes, organiser les emplois du temps, gérer les paiements et communiquer avec les familles. Notre logiciel rassemble toutes ces informations dans un espace unique afin de réduire les tâches manuelles et de faciliter le travail des équipes.
                 </p>
                 <ul className="space-y-3 font-kanit text-gray-700 dark:text-gray-300">
                   {['Centralisez les dossiers des élèves', 'Gérez les inscriptions et réinscriptions', 'Suivez les notes, absences et retards', 'Organisez les classes et les emplois du temps', 'Suivez les frais de scolarité', 'Communiquez plus facilement avec les parents'].map((item, i) => (
@@ -222,7 +222,7 @@ export default function GestionScolairePage() {
         <div className="container mx-auto max-w-5xl text-center space-y-16">
           <div className="space-y-4">
             <h2 className="text-2xl md:text-4xl font-bold font-urbanist">Concentrez-vous sur la réussite des élèves</h2>
-            <p className="text-lg text-gray-700 dark:text-gray-300 font-kanit">Une école mieux organisée, c'est un meilleur suivi pour chaque élève.</p>
+            <p className="text-lg text-gray-700 dark:text-gray-300 font-kanit">Une école mieux organisée, c&apos;est un meilleur suivi pour chaque élève.</p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
@@ -268,7 +268,7 @@ export default function GestionScolairePage() {
       {/* --- CTA FINAL --- */}
       <section className="py-24 px-4 bg-brand-primary text-white">
         <div className="container mx-auto max-w-4xl text-center space-y-8">
-          <h2 className="text-3xl md:text-5xl font-bold font-urbanist">Simplifiez la gestion de votre établissement dès aujourd'hui</h2>
+          <h2 className="text-3xl md:text-5xl font-bold font-urbanist">Simplifiez la gestion de votre établissement dès aujourd&apos;hui</h2>
           <p className="text-xl font-kanit opacity-90">Centralisez vos élèves, vos classes, vos notes, vos absences et vos informations administratives dans une seule solution.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <a

@@ -198,7 +198,7 @@ export default function GestionAssoPage() {
         <div className="container mx-auto max-w-5xl text-center space-y-16">
           <div className="space-y-4">
             <h2 className="text-2xl md:text-4xl font-bold font-urbanist">Concentrez-vous sur votre mission associative</h2>
-            <p className="text-lg text-gray-700 dark:text-gray-300 font-kanit">Une association mieux organisée, c'est une équipe plus disponible et une communauté plus engagée.</p>
+            <p className="text-lg text-gray-700 dark:text-gray-300 font-kanit">Une association mieux organisée, c&apos;est une équipe plus disponible et une communauté plus engagée.</p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
@@ -268,8 +268,8 @@ export default function GestionAssoPage() {
       {/* --- CTA FINAL --- */}
       <section className="py-24 px-4 bg-brand-primary text-white">
         <div className="container mx-auto max-w-4xl text-center space-y-8">
-          <h2 className="text-3xl md:text-5xl font-bold font-urbanist">Simplifiez la gestion de votre association dès aujourd'hui</h2>
-          <p className="text-xl font-kanit opacity-90">Gagnez du temps sur l'administration et consacrez plus d'énergie à vos membres, vos projets et votre mission.</p>
+          <h2 className="text-3xl md:text-5xl font-bold font-urbanist">Simplifiez la gestion de votre association dès aujourd&apos;hui</h2>
+          <p className="text-xl font-kanit opacity-90">Gagnez du temps sur l&apos;administration et consacrez plus d&apos;énergie à vos membres, vos projets et votre mission.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <a
               href="https://wa.me/2250714074124?text=Bonjour%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20votre%20solution%20de%20gestion%20associative."
@@ -292,7 +292,7 @@ export default function GestionAssoPage() {
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div className="space-y-4">
               <h3 className="text-xl font-bold font-urbanist">AlteractWeb</h3>
-              <p className="text-sm text-gray-400 font-kanit">Solutions logicielles métiers pour les associations et organisations engagées en Côte d'Ivoire.</p>
+              <p className="text-sm text-gray-400 font-kanit">Solutions logicielles métiers pour les associations et organisations engagées en Côte d&apos;Ivoire.</p>
             </div>
             
             <div>
