@@ -23,11 +23,21 @@ export default function GestionScolairePage() {
     }
 
     const isMobile = window.matchMedia('(max-width: 768px)').matches;
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const scrollContainer = scrollContainerRef.current;
-    const panels = panelsRef.current.filter((panel): panel is HTMLDivElement => panel !== null);
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
 
-    if (isMobile || prefersReducedMotion || !scrollContainer || panels.length < 2) {
+    const scrollContainer = scrollContainerRef.current;
+    const panels = panelsRef.current.filter(
+      (panel): panel is HTMLDivElement => panel !== null
+    );
+
+    if (
+      isMobile ||
+      prefersReducedMotion ||
+      !scrollContainer ||
+      panels.length < 2
+    ) {
       return;
     }
 
@@ -55,229 +65,588 @@ export default function GestionScolairePage() {
   }, []);
 
   return (
-    <main className="bg-white dark:bg-brand-dark text-brand-dark dark:text-white overflow-x-hidden">
-      
-      {/* --- HERO SECTION --- */}
-      <section className="relative pt-32 pb-20 px-4 min-h-[90vh] flex items-center">
-        <div className="container mx-auto max-w-6xl grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8 animate-fade-in-up">
-            <span className="inline-block py-1 px-3 rounded-full bg-red-50 dark:bg-red-900/20 text-brand-primary text-xs font-bold tracking-wider uppercase border border-red-100 dark:border-red-800">
+    <main className="overflow-x-hidden bg-white text-brand-dark dark:bg-brand-dark dark:text-white">
+
+      {/* HERO SECTION */}
+      <section className="relative isolate flex min-h-[90vh] items-center overflow-hidden px-4 pb-20 pt-28 md:pb-24 md:pt-32">
+
+        {/* Fond dégradé */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 -z-30"
+          style={{
+            background: `
+              radial-gradient(
+                55% 55% at 14% 20%,
+                rgba(212, 61, 73, 0.16),
+                transparent 70%
+              ),
+              radial-gradient(
+                48% 50% at 88% 22%,
+                rgba(247, 64, 57, 0.14),
+                transparent 72%
+              ),
+              radial-gradient(
+                42% 45% at 62% 82%,
+                rgba(59, 130, 246, 0.08),
+                transparent 70%
+              ),
+              linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 1) 0%,
+                rgba(255, 247, 247, 0.96) 52%,
+                rgba(255, 255, 255, 1) 100%
+              )
+            `,
+          }}
+        />
+
+        {/* Halos décoratifs */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -left-40 top-16 -z-20 h-[420px] w-[420px] animate-pulse rounded-full bg-brand-primary/15 blur-[110px]"
+          style={{ animationDuration: '7s' }}
+        />
+
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-40 top-10 -z-20 h-[460px] w-[460px] animate-pulse rounded-full bg-brand-secondary/15 blur-[120px]"
+          style={{
+            animationDuration: '9s',
+            animationDelay: '-3s',
+          }}
+        />
+
+        {/* Grille subtile */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 -z-20 opacity-[0.035] dark:opacity-[0.05]"
+          style={{
+            backgroundImage:
+              'linear-gradient(#121212 1px, transparent 1px), linear-gradient(90deg, #121212 1px, transparent 1px)',
+            backgroundSize: '48px 48px',
+            maskImage:
+              'linear-gradient(to bottom, black 0%, black 68%, transparent 100%)',
+            WebkitMaskImage:
+              'linear-gradient(to bottom, black 0%, black 68%, transparent 100%)',
+          }}
+        />
+
+        <div className="container mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+          <div className="animate-fade-in-up space-y-8">
+
+            <span className="inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-white/70 px-4 py-2 font-kanit text-xs font-bold uppercase tracking-[0.16em] text-brand-primary shadow-sm backdrop-blur-md dark:bg-brand-dark/60">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-primary opacity-40" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-primary" />
+              </span>
+
               Gestion scolaire simplifiée
             </span>
-            
-            <h1 className="text-3xl md:text-4xl font-bold font-urbanist leading-tight">
-              Gérez votre établissement scolaire depuis <span className="bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">une seule plateforme</span>
+
+            <h1 className="max-w-2xl font-urbanist text-4xl font-bold leading-[1.08] tracking-[-0.035em] sm:text-5xl md:text-6xl">
+              Gérez votre établissement scolaire depuis{' '}
+              <span className="bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-primary bg-[length:200%_auto] bg-clip-text text-transparent">
+                une seule plateforme
+              </span>
             </h1>
-            
-            <p className="text-lg text-gray-700 dark:text-gray-300 font-kanit leading-relaxed max-w-xl">
-              Centralisez les élèves, les inscriptions, les notes, les absences, les paiements et la communication avec les parents dans un logiciel simple et moderne.
+
+            <p className="max-w-xl font-kanit text-base font-light leading-7 text-gray-700 dark:text-gray-300 sm:text-lg sm:leading-8">
+              Centralisez les élèves, les inscriptions, les notes, les
+              absences, les paiements et la communication avec les parents dans
+              un logiciel simple et moderne.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/contact?solution=gestion-scolaire" className="px-8 py-4 bg-brand-primary text-white font-bold rounded-lg hover:bg-red-600 transition-colors shadow-lg font-kanit flex items-center justify-center gap-2">
-                Commencer maintenant <ArrowRight size={18} />
+            <div className="flex flex-col gap-4 sm:flex-row">
+              <Link
+                href="/contact?solution=gestion-scolaire"
+                className="group inline-flex items-center justify-center gap-2 rounded-xl bg-brand-primary px-8 py-4 font-kanit font-bold text-white shadow-[0_16px_40px_rgba(212,61,73,0.24)] transition-all duration-300 hover:-translate-y-1 hover:bg-red-600 hover:shadow-[0_20px_48px_rgba(212,61,73,0.32)]"
+              >
+                Commencer maintenant
+
+                <ArrowRight
+                  size={18}
+                  className="transition-transform duration-300 group-hover:translate-x-1"
+                />
               </Link>
-              <Link href="#fonctionnement" className="px-8 py-4 border-2 border-gray-300 dark:border-gray-600 font-bold rounded-lg hover:border-brand-primary hover:text-brand-primary transition-colors font-kanit flex items-center justify-center gap-2">
-                <PlayCircle size={18} /> Comment ça marche
+
+              <Link
+                href="#fonctionnement"
+                className="group inline-flex items-center justify-center gap-2 rounded-xl border border-gray-300 bg-white/65 px-8 py-4 font-kanit font-bold shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-brand-primary hover:text-brand-primary hover:shadow-lg dark:border-gray-600 dark:bg-brand-dark/40"
+              >
+                <PlayCircle
+                  size={18}
+                  className="transition-transform duration-300 group-hover:scale-110"
+                />
+
+                Comment ça marche
               </Link>
             </div>
 
-            {/* Indicateurs Dashboard Hero */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 pt-4">
-              {[
-                { label: 'Élèves inscrits', val: '---' },
-                { label: 'Absences récentes', val: '---' },
-                { label: 'Paiements reçus', val: '---' },
-                { label: 'Moyenne générale', val: '---' },
-                { label: 'Cours à venir', val: '---' },
-                { label: 'Notifications', val: '---' }
-              ].map((stat, i) => (
-                <div key={i} className="bg-gray-50 dark:bg-[#1a1a1a] p-3 rounded-xl border border-gray-200 dark:border-gray-800 text-center">
-                  <div className="text-lg font-bold font-urbanist text-brand-primary">{stat.val}</div>
-                  <div className="text-[10px] text-gray-500 dark:text-gray-400 font-kanit uppercase tracking-wide">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-
-            <p className="text-sm text-gray-500 dark:text-gray-400 font-kanit flex items-center gap-2">
-              <CheckCircle2 size={16} className="text-brand-primary" /> Une gestion scolaire plus simple pour les équipes administratives, les enseignants, les élèves et les parents.
+            <p className="font-kanit text-sm leading-6 text-gray-500 dark:text-gray-400">
+              Une gestion scolaire plus simple pour les équipes administratives, les enseignants, les élèves et les parents.
             </p>
           </div>
 
-          <div className="relative group flex justify-center">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-blue-700/20 rounded-2xl blur-3xl opacity-50 group-hover:opacity-70 transition-opacity"></div>
-            <img
-              src="/dashboard-gestion-scolaire.png"
-              alt="Bannière gestion scolaire"
-              className="relative w-full max-w-[620px] rounded-[22px] border-[10px] border-white shadow-[0_18px_40px_rgba(0,0,0,0.08)] object-cover"
+          {/* Dashboard */}
+          <div className="group relative flex justify-center lg:justify-end">
+            <div
+              aria-hidden="true"
+              className="absolute inset-x-[8%] bottom-[2%] top-[15%] rounded-[40px] bg-gradient-to-r from-brand-primary/20 via-blue-500/15 to-brand-secondary/20 blur-[65px] transition-all duration-700 group-hover:scale-105 group-hover:opacity-80"
             />
+
+            {/* Carte flottante */}
+            <div className="absolute -left-5 top-10 z-20 hidden rounded-xl border border-white/70 bg-white/85 p-3 shadow-xl backdrop-blur-xl sm:block dark:border-gray-700 dark:bg-brand-dark/85">
+              <div className="flex items-center gap-3">
+                <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-red-50 text-brand-primary dark:bg-red-900/20">
+                  <Users size={17} />
+                </span>
+
+                <div>
+                  <p className="font-kanit text-[10px] text-gray-500">
+                    Élèves inscrits
+                  </p>
+
+                  <p className="font-urbanist text-sm font-bold text-brand-primary">
+                    ---
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Deuxième carte flottante */}
+            <div className="absolute -right-3 bottom-10 z-20 hidden rounded-xl border border-white/70 bg-white/85 p-3 shadow-xl backdrop-blur-xl sm:block dark:border-gray-700 dark:bg-brand-dark/85">
+              <div className="flex items-center gap-3">
+                <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-green-50 text-green-600">
+                  <CheckCircle2 size={17} />
+                </span>
+
+                <div>
+                  <p className="font-kanit text-[10px] text-gray-500">
+                    Paiements reçus
+                  </p>
+
+                  <p className="font-urbanist text-sm font-bold">---</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative w-full max-w-[680px] transition-transform duration-700 ease-out group-hover:-translate-y-2">
+              <div className="overflow-hidden rounded-[24px] border border-white/90 bg-white/70 p-2 shadow-[0_30px_90px_rgba(18,18,18,0.18)] backdrop-blur-xl sm:p-3">
+                <img
+                  src="/dashboard-gestion-scolaire.png"
+                  alt="Bannière gestion scolaire"
+                  className="relative w-full rounded-[17px] border border-gray-100 object-cover"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* --- SCROLL HORIZONTAL PILOTÉ PAR LE DÉFILEMENT --- */}
-      <section ref={scrollContainerRef} className="relative h-screen overflow-hidden bg-gray-50 dark:bg-[#121212]">
-        <div className="absolute top-8 right-8 z-10 text-sm font-bold text-gray-400 font-urbanist text-2xl leading-none">
-          →
+      {/* SCROLL HORIZONTAL */}
+      <section
+        ref={scrollContainerRef}
+        className="relative overflow-hidden border-y border-gray-100 bg-gray-50 dark:border-gray-800 dark:bg-[#121212] md:h-screen"
+      >
+        <div className="pointer-events-none absolute right-8 top-8 z-20 hidden items-center gap-3 md:flex">
+          <span className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-white font-urbanist text-xl text-brand-primary shadow-sm dark:border-gray-700 dark:bg-[#1a1a1a]">
+            →
+          </span>
         </div>
-        <div className="absolute bottom-8 right-8 z-10 text-sm font-bold text-gray-400 font-urbanist">
+
+        <div className="absolute bottom-8 right-8 z-20 hidden rounded-full border border-gray-200 bg-white/80 px-4 py-2 font-urbanist text-sm font-bold text-gray-500 shadow-sm backdrop-blur-md dark:border-gray-700 dark:bg-[#1a1a1a]/80 md:block">
           01 / 02
         </div>
 
-        <div ref={containerRef} className="flex h-full w-[200vw]">
-          
-          {/* PANNEAU 1 : PRÉSENTATION */}
-          <div ref={(el) => { panelsRef.current[0] = el; }} className="w-screen h-full flex-shrink-0 flex items-center justify-center px-4">
-            <div className="container mx-auto max-w-5xl grid md:grid-cols-2 gap-16 items-center">
+        <div
+          ref={containerRef}
+          className="flex w-full flex-col md:h-full md:w-[200vw] md:flex-row"
+        >
+
+          {/* PANNEAU 1 */}
+          <div
+            ref={(el) => {
+              panelsRef.current[0] = el;
+            }}
+            className="flex min-h-screen w-full flex-shrink-0 items-center justify-center px-4 py-20 md:h-full md:w-screen md:py-0"
+          >
+            <div className="container mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-20">
               <div className="space-y-6">
-                <h2 className="text-2xl md:text-4xl font-bold font-urbanist">Une gestion scolaire plus claire, plus rapide et mieux organisée</h2>
-                <p className="text-lg text-gray-700 dark:text-gray-300 font-kanit leading-relaxed">
-                  La gestion d&apos;un établissement scolaire implique de nombreuses tâches : inscrire les élèves, suivre les absences, saisir les notes, organiser les emplois du temps, gérer les paiements et communiquer avec les familles. Notre logiciel rassemble toutes ces informations dans un espace unique afin de réduire les tâches manuelles et de faciliter le travail des équipes.
+                <h2 className="max-w-2xl font-urbanist text-3xl font-bold leading-tight tracking-tight md:text-4xl lg:text-5xl">
+                  Une gestion scolaire plus claire, plus rapide et mieux
+                  organisée
+                </h2>
+
+                <p className="font-kanit text-base font-light leading-7 text-gray-700 dark:text-gray-300 md:text-lg md:leading-8">
+                  La gestion d&apos;un établissement scolaire implique de
+                  nombreuses tâches : inscrire les élèves, suivre les absences,
+                  saisir les notes, organiser les emplois du temps, gérer les
+                  paiements et communiquer avec les familles. Notre logiciel
+                  rassemble toutes ces informations dans un espace unique afin
+                  de réduire les tâches manuelles et de faciliter le travail
+                  des équipes.
                 </p>
-                <ul className="space-y-3 font-kanit text-gray-700 dark:text-gray-300">
-                  {['Centralisez les dossiers des élèves', 'Gérez les inscriptions et réinscriptions', 'Suivez les notes, absences et retards', 'Organisez les classes et les emplois du temps', 'Suivez les frais de scolarité', 'Communiquez plus facilement avec les parents'].map((item, i) => (
-                    <li key={i} className="flex items-center gap-3">
-                      <div className="w-6 h-6 rounded-full bg-brand-primary/10 flex items-center justify-center"><CheckCircle2 size={14} className="text-brand-primary" /></div>
-                      {item}
+
+                <ul className="grid gap-3 font-kanit text-gray-700 dark:text-gray-300 sm:grid-cols-2">
+                  {[
+                    'Centralisez les dossiers des élèves',
+                    'Gérez les inscriptions et réinscriptions',
+                    'Suivez les notes, absences et retards',
+                    'Organisez les classes et les emplois du temps',
+                    'Suivez les frais de scolarité',
+                    'Communiquez plus facilement avec les parents'
+                  ].map((item, i) => (
+                    <li
+                      key={i}
+                      className="flex items-start gap-3 rounded-xl border border-transparent p-2 transition-colors duration-300 hover:border-brand-primary/10 hover:bg-white dark:hover:bg-[#1a1a1a]"
+                    >
+                      <div className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-brand-primary/10">
+                        <CheckCircle2
+                          size={14}
+                          className="text-brand-primary"
+                        />
+                      </div>
+
+                      <span className="text-sm leading-6">{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-              <div className="bg-white dark:bg-[#1a1a1a] rounded-2xl border border-gray-200 dark:border-gray-800 p-6 shadow-lg space-y-4">
-                 <div className="grid grid-cols-2 gap-3">
-                   <div className="p-3 bg-gray-50 dark:bg-[#2a2a2a] rounded-lg text-center">
-                     <div className="text-2xl font-bold font-urbanist text-brand-primary">---</div>
-                     <div className="text-xs text-gray-500 font-kanit">Effectifs</div>
-                   </div>
-                   <div className="p-3 bg-gray-50 dark:bg-[#2a2a2a] rounded-lg text-center">
-                     <div className="text-2xl font-bold font-urbanist text-brand-primary">---</div>
-                     <div className="text-xs text-gray-500 font-kanit">Absences</div>
-                   </div>
-                 </div>
-                 <div className="h-32 bg-gray-50 dark:bg-[#2a2a2a] rounded-lg flex items-end justify-around p-3 gap-2">
-                   {[30, 50, 40, 70, 60, 85].map((h, i) => (
-                     <div key={i} style={{height: `${h}%`}} className="w-full bg-brand-primary/30 rounded-t-sm"></div>
-                   ))}
-                 </div>
-                 <div className="flex justify-between items-center p-3 bg-gray-50 dark:bg-[#2a2a2a] rounded-lg">
-                   <span className="text-sm font-kanit text-gray-500">Paiements en attente</span>
-                   <span className="font-bold font-urbanist text-brand-primary">---</span>
-                 </div>
+
+              {/* Carte analytique */}
+              <div className="relative">
+                <div className="absolute inset-8 -z-10 rounded-3xl bg-brand-primary/15 blur-[55px]" />
+
+                <div className="rounded-3xl border border-gray-200 bg-white p-5 shadow-[0_24px_70px_rgba(18,18,18,0.12)] dark:border-gray-800 dark:bg-[#1a1a1a] sm:p-7">
+                  <div className="mb-6 flex items-center justify-between">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-red-50 text-brand-primary dark:bg-red-900/20">
+                      <GraduationCap size={22} />
+                    </span>
+
+                    <div className="h-2 w-24 rounded-full bg-gray-100 dark:bg-gray-700" />
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="rounded-xl border border-gray-100 bg-gray-50 p-4 text-center dark:border-gray-700 dark:bg-[#2a2a2a]">
+                      <div className="font-urbanist text-2xl font-bold text-brand-primary">
+                        ---
+                      </div>
+
+                      <div className="mt-1 font-kanit text-xs text-gray-500">
+                        Effectifs
+                      </div>
+                    </div>
+
+                    <div className="rounded-xl border border-gray-100 bg-gray-50 p-4 text-center dark:border-gray-700 dark:bg-[#2a2a2a]">
+                      <div className="font-urbanist text-2xl font-bold text-brand-primary">
+                        ---
+                      </div>
+
+                      <div className="mt-1 font-kanit text-xs text-gray-500">
+                        Absences
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-4 flex h-40 items-end justify-around gap-2 rounded-2xl border border-gray-100 bg-gray-50 p-4 dark:border-gray-700 dark:bg-[#2a2a2a]">
+                    {[30, 50, 40, 70, 60, 85].map((h, i) => (
+                      <div
+                        key={i}
+                        className="group relative flex h-full flex-1 items-end"
+                      >
+                        <div
+                          style={{ height: `${h}%` }}
+                          className="w-full rounded-t-md bg-gradient-to-t from-brand-primary to-brand-secondary opacity-65 transition-all duration-300 group-hover:opacity-100"
+                        />
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-4 flex items-center justify-between rounded-xl border border-gray-100 bg-gray-50 p-4 dark:border-gray-700 dark:bg-[#2a2a2a]">
+                    <span className="font-kanit text-sm text-gray-500">
+                      Paiements en attente
+                    </span>
+
+                    <span className="font-urbanist font-bold text-brand-primary">
+                      ---
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* PANNEAU 2 : FONCTIONNALITÉS CLÉS (4 BLOCS MAX) */}
-          <div ref={(el) => { panelsRef.current[1] = el; }} className="w-screen h-full flex-shrink-0 flex items-center justify-center px-4">
-            <div className="container mx-auto max-w-6xl">
-              <h2 className="text-2xl md:text-4xl font-bold font-urbanist mb-12 text-center">Tous les outils essentiels pour piloter votre établissement</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {/* PANNEAU 2 */}
+          <div
+            ref={(el) => {
+              panelsRef.current[1] = el;
+            }}
+            className="flex min-h-screen w-full flex-shrink-0 items-center justify-center px-4 py-20 md:h-full md:w-screen md:py-0"
+          >
+            <div className="container mx-auto max-w-7xl">
+              <h2 className="mx-auto mb-10 max-w-3xl text-center font-urbanist text-3xl font-bold leading-tight tracking-tight md:mb-12 md:text-4xl lg:text-5xl">
+                Tous les outils essentiels pour piloter votre établissement
+              </h2>
+
+              <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
                 {[
-                  { icon: Users, title: 'Gestion des élèves', desc: 'Créez et centralisez les dossiers, informations personnelles, classe et historique scolaire.' },
-                  { icon: FileText, title: 'Inscriptions et réinscriptions', desc: 'Organisez les admissions, inscriptions et réinscriptions depuis une interface unique.' },
-                  { icon: GraduationCap, title: 'Notes et bulletins', desc: 'Saisissez les notes, calculez les moyennes et préparez les bulletins selon vos besoins.' },
-                  // ✅ 4ème bloc en ROUGE (#E63946) avec texte spécifique
-                  { 
-                    icon: PlusCircle, 
-                    title: 'Autres fonctionnalités disponibles', 
+                  {
+                    icon: Users,
+                    title: 'Gestion des élèves',
+                    desc: 'Créez et centralisez les dossiers, informations personnelles, classe et historique scolaire.'
+                  },
+                  {
+                    icon: FileText,
+                    title: 'Inscriptions et réinscriptions',
+                    desc: 'Organisez les admissions, inscriptions et réinscriptions depuis une interface unique.'
+                  },
+                  {
+                    icon: GraduationCap,
+                    title: 'Notes et bulletins',
+                    desc: 'Saisissez les notes, calculez les moyennes et préparez les bulletins selon vos besoins.'
+                  },
+                  {
+                    icon: PlusCircle,
+                    title: 'Autres fonctionnalités disponibles',
                     desc: 'Emplois du temps, paiements scolaires, communication parents-école et bien plus encore.',
-                    isRed: true 
+                    isRed: true
                   }
                 ].map((feat, i) => (
-                  <div 
-                    key={i} 
-                    className={`p-6 rounded-2xl border shadow-sm hover:shadow-md transition-shadow flex flex-col gap-4
-                      ${feat.isRed 
-                        ? 'bg-[#E63946] border-[#E63946] text-white' 
-                        : 'bg-white dark:bg-[#1a1a1a] border-gray-200 dark:border-gray-800 text-brand-dark dark:text-white'
-                      }`}
+                  <article
+                    key={i}
+                    className={`group relative flex min-h-[280px] flex-col gap-5 overflow-hidden rounded-2xl border p-6 shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_22px_55px_rgba(18,18,18,0.12)] ${
+                      feat.isRed
+                        ? 'border-[#E63946] bg-[#E63946] text-white'
+                        : 'border-gray-200 bg-white text-brand-dark hover:border-brand-primary/30 dark:border-gray-800 dark:bg-[#1a1a1a] dark:text-white'
+                    }`}
                   >
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center
-                      ${feat.isRed ? 'bg-white/20' : 'bg-brand-primary/10'}`}>
-                      <feat.icon size={24} className={feat.isRed ? 'text-white' : 'text-brand-primary'} />
+                    <div
+                      aria-hidden="true"
+                      className={`pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full blur-3xl transition-all duration-500 group-hover:scale-125 ${
+                        feat.isRed
+                          ? 'bg-white/15'
+                          : 'bg-brand-primary/0 group-hover:bg-brand-primary/15'
+                      }`}
+                    />
+
+                    <div
+                      className={`relative flex h-12 w-12 items-center justify-center rounded-xl border transition-all duration-300 group-hover:scale-110 ${
+                        feat.isRed
+                          ? 'border-white/20 bg-white/20'
+                          : 'border-red-100 bg-red-50 text-brand-primary group-hover:border-brand-primary group-hover:bg-brand-primary group-hover:text-white dark:border-red-900/30 dark:bg-red-900/20'
+                      }`}
+                    >
+                      <feat.icon
+                        size={24}
+                        className={
+                          feat.isRed ? 'text-white' : 'text-current'
+                        }
+                      />
                     </div>
-                    <h3 className="font-bold font-urbanist">{feat.title}</h3>
-                    <p className={`text-sm leading-relaxed ${feat.isRed ? 'text-white/90' : 'text-gray-600 dark:text-gray-400 font-kanit'}`}>
+
+                    <h3 className="relative font-urbanist text-lg font-bold leading-tight">
+                      {feat.title}
+                    </h3>
+
+                    <p
+                      className={`relative font-kanit text-sm font-light leading-6 ${
+                        feat.isRed
+                          ? 'text-white/90'
+                          : 'text-gray-600 dark:text-gray-400'
+                      }`}
+                    >
                       {feat.desc}
                     </p>
-                  </div>
+
+                    <div
+                      className={`relative mt-auto h-px w-full ${
+                        feat.isRed ? 'bg-white/20' : 'bg-gray-100 dark:bg-gray-700'
+                      }`}
+                    />
+                  </article>
                 ))}
               </div>
             </div>
           </div>
-
         </div>
       </section>
 
-      {/* --- BÉNÉFICES --- */}
-      <section className="py-24 px-4">
-        <div className="container mx-auto max-w-5xl text-center space-y-16">
-          <div className="space-y-4">
-            <h2 className="text-2xl md:text-4xl font-bold font-urbanist">Concentrez-vous sur la réussite des élèves</h2>
-            <p className="text-lg text-gray-700 dark:text-gray-300 font-kanit">Une école mieux organisée, c&apos;est un meilleur suivi pour chaque élève.</p>
+      {/* BÉNÉFICES */}
+      <section className="relative overflow-hidden bg-white px-4 py-20 dark:bg-brand-dark md:py-28">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[420px] w-[720px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-primary/[0.04] blur-[100px]"
+        />
+
+        <div className="container mx-auto max-w-6xl space-y-14 text-center md:space-y-16">
+          <div className="mx-auto max-w-3xl space-y-4">
+            <h2 className="font-urbanist text-3xl font-bold leading-tight tracking-tight md:text-4xl lg:text-5xl">
+              Concentrez-vous sur la réussite des élèves
+            </h2>
+
+            <p className="font-kanit text-base font-light leading-7 text-gray-700 dark:text-gray-300 md:text-lg">
+              Une école mieux organisée, c&apos;est un meilleur suivi pour
+              chaque élève.
+            </p>
           </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
+
+          <div className="grid gap-5 md:grid-cols-3">
             {[
-              { title: 'Organisez', items: ['Centralisez vos informations', 'Gagnez du temps administratif'] },
-              { title: 'Suivez', items: ['Améliorez le suivi pédagogique', 'Renforcez la communication avec les parents'] },
-              { title: 'Accompagnez', items: ['Facilitez le travail des enseignants', 'Gardez une meilleure visibilité financière'] }
+              {
+                title: 'Organisez',
+                items: [
+                  'Centralisez vos informations',
+                  'Gagnez du temps administratif'
+                ]
+              },
+              {
+                title: 'Suivez',
+                items: [
+                  'Améliorez le suivi pédagogique',
+                  'Renforcez la communication avec les parents'
+                ]
+              },
+              {
+                title: 'Accompagnez',
+                items: [
+                  'Facilitez le travail des enseignants',
+                  'Gardez une meilleure visibilité financière'
+                ]
+              }
             ].map((block, i) => (
-              <div key={i} className="p-8 rounded-2xl bg-gray-50 dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-800 text-left">
-                <h3 className="text-2xl font-bold font-urbanist mb-6 text-brand-primary">{block.title}</h3>
-                <ul className="space-y-3">
+              <article
+                key={i}
+                className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-7 text-left transition-all duration-500 hover:-translate-y-2 hover:border-brand-primary/30 hover:shadow-[0_22px_60px_rgba(18,18,18,0.09)] dark:border-gray-800 dark:bg-[#1a1a1a] md:p-8"
+              >
+                <span className="font-urbanist text-sm font-bold text-brand-primary/50">
+                  0{i + 1}
+                </span>
+
+                <h3 className="mb-6 mt-4 font-urbanist text-2xl font-bold text-brand-primary">
+                  {block.title}
+                </h3>
+
+                <ul className="space-y-4">
                   {block.items.map((item, j) => (
-                    <li key={j} className="flex items-start gap-3 font-kanit text-gray-700 dark:text-gray-300">
-                      <CheckCircle2 size={18} className="text-brand-primary mt-0.5 flex-shrink-0" />
+                    <li
+                      key={j}
+                      className="flex items-start gap-3 font-kanit text-gray-700 dark:text-gray-300"
+                    >
+                      <span className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-brand-primary/10">
+                        <CheckCircle2
+                          size={15}
+                          className="text-brand-primary"
+                        />
+                      </span>
+
                       {item}
                     </li>
                   ))}
                 </ul>
-              </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* --- FONCTIONNEMENT --- */}
-      <section id="fonctionnement" className="py-24 px-4">
-        <div className="container mx-auto max-w-4xl text-center space-y-16">
-          <h2 className="text-2xl md:text-4xl font-bold font-urbanist">Commencez en quelques étapes</h2>
-          <div className="grid md:grid-cols-4 gap-8 relative">
-            <div className="hidden md:block absolute top-8 left-[12%] right-[12%] h-0.5 bg-gray-200 dark:bg-gray-800 -z-10"></div>
-            {['Créez votre espace établissement.', 'Ajoutez vos élèves, classes et utilisateurs.', 'Configurez vos matières, emplois du temps et frais scolaires.', 'Suivez votre établissement depuis le tableau de bord.'].map((step, i) => (
-              <div key={i} className="flex flex-col items-center gap-4">
-                <div className="w-16 h-16 rounded-full bg-brand-primary text-white flex items-center justify-center text-2xl font-bold font-urbanist shadow-lg z-10">
+      {/* FONCTIONNEMENT */}
+      <section
+        id="fonctionnement"
+        className="border-y border-gray-100 bg-gray-50 px-4 py-20 dark:border-gray-800 dark:bg-[#121212] md:py-28"
+      >
+        <div className="container mx-auto max-w-6xl space-y-14 text-center md:space-y-16">
+          <h2 className="font-urbanist text-3xl font-bold leading-tight tracking-tight md:text-4xl lg:text-5xl">
+            Commencez en quelques étapes
+          </h2>
+
+          <div className="relative grid gap-5 md:grid-cols-4">
+            <div className="absolute left-[12%] right-[12%] top-8 -z-10 hidden h-px bg-gradient-to-r from-transparent via-brand-primary/40 to-transparent md:block" />
+
+            {[
+              'Créez votre espace établissement.',
+              'Ajoutez vos élèves, classes et utilisateurs.',
+              'Configurez vos matières, emplois du temps et frais scolaires.',
+              'Suivez votre établissement depuis le tableau de bord.'
+            ].map((step, i) => (
+              <article
+                key={i}
+                className="group flex flex-col items-center gap-4 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-brand-primary/30 hover:shadow-xl dark:border-gray-800 dark:bg-[#1a1a1a] md:border-transparent md:bg-transparent md:shadow-none dark:md:bg-transparent"
+              >
+                <div className="z-10 flex h-16 w-16 items-center justify-center rounded-full border-4 border-white bg-brand-primary font-urbanist text-xl font-bold text-white shadow-[0_12px_30px_rgba(212,61,73,0.25)] transition-all duration-300 group-hover:scale-110 group-hover:bg-brand-secondary dark:border-[#121212]">
                   {i + 1}
                 </div>
-                <p className="font-kanit text-gray-700 dark:text-gray-300">{step}</p>
-              </div>
+
+                <p className="max-w-[230px] font-kanit leading-6 text-gray-700 dark:text-gray-300">
+                  {step}
+                </p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* --- CTA FINAL --- */}
-      <section className="py-24 px-4 bg-brand-primary text-white">
-        <div className="container mx-auto max-w-4xl text-center space-y-8">
-          <h2 className="text-3xl md:text-5xl font-bold font-urbanist">Simplifiez la gestion de votre établissement dès aujourd&apos;hui</h2>
-          <p className="text-xl font-kanit opacity-90">Centralisez vos élèves, vos classes, vos notes, vos absences et vos informations administratives dans une seule solution.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <a
-              href="https://wa.me/2250714074124?text=Bonjour%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20votre%20solution%20de%20gestion%20scolaire."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-4 bg-white text-brand-primary font-bold rounded-lg hover:bg-gray-100 transition-colors shadow-lg font-kanit"
-            >
-              Parlez à un expert
-            </a>
-            <Link href="/contact" className="px-8 py-4 border-2 border-white/30 font-bold rounded-lg hover:bg-white/10 transition-colors font-kanit">
-              Demander une démonstration
-            </Link>
+      {/* CTA FINAL */}
+      <section className="bg-white px-4 py-20 dark:bg-brand-dark md:py-28">
+        <div className="container mx-auto max-w-6xl">
+          <div className="relative isolate overflow-hidden rounded-3xl bg-brand-primary px-6 py-14 text-center text-white shadow-[0_28px_80px_rgba(212,61,73,0.28)] sm:px-10 md:py-20">
+
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -left-28 -top-28 -z-10 h-80 w-80 rounded-full bg-white/15 blur-[80px]"
+            />
+
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -bottom-32 -right-20 -z-10 h-96 w-96 rounded-full bg-orange-300/25 blur-[90px]"
+            />
+
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 -z-10 opacity-10"
+              style={{
+                backgroundImage:
+                  'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)',
+                backgroundSize: '42px 42px',
+                maskImage:
+                  'linear-gradient(to bottom, black, transparent 90%)',
+                WebkitMaskImage:
+                  'linear-gradient(to bottom, black, transparent 90%)',
+              }}
+            />
+
+            <div className="mx-auto max-w-4xl space-y-8">
+              <h2 className="font-urbanist text-3xl font-bold leading-tight tracking-tight md:text-5xl">
+                Simplifiez la gestion de votre établissement dès
+                aujourd&apos;hui
+              </h2>
+
+              <p className="mx-auto max-w-3xl font-kanit text-lg font-light leading-8 text-white/90 md:text-xl">
+                Centralisez vos élèves, vos classes, vos notes, vos absences et
+                vos informations administratives dans une seule solution.
+              </p>
+
+              <div className="flex flex-col justify-center gap-4 pt-2 sm:flex-row">
+                <a
+                  href="https://wa.me/2250714074124?text=Bonjour%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20votre%20solution%20de%20gestion%20scolaire."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-xl bg-white px-8 py-4 font-kanit font-bold text-brand-primary shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-gray-50 hover:shadow-xl"
+                >
+                  Parlez à un expert
+                </a>
+
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center rounded-xl border border-white/40 bg-white/10 px-8 py-4 font-kanit font-bold text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-white hover:bg-white/20"
+                >
+                  Demander une démonstration
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
-
     </main>
   );
 }
