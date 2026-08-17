@@ -117,8 +117,8 @@ export default function GestionScolairePage() {
 
       {/* --- SCROLL HORIZONTAL PILOTÉ PAR LE DÉFILEMENT --- */}
       <section ref={scrollContainerRef} className="relative h-screen overflow-hidden bg-gray-50 dark:bg-[#121212]">
-        <div className="absolute top-8 left-1/2 -translate-x-1/2 z-10 text-sm font-bold text-gray-400 uppercase tracking-widest font-kanit">
-          Faites défiler pour découvrir
+        <div className="absolute top-8 right-8 z-10 text-sm font-bold text-gray-400 font-urbanist text-2xl leading-none">
+          →
         </div>
         <div className="absolute bottom-8 right-8 z-10 text-sm font-bold text-gray-400 font-urbanist">
           01 / 02

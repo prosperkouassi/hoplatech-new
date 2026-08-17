@@ -115,8 +115,8 @@ export default function GestionAssoPage() {
 
       {/* --- SCROLL HORIZONTAL PILOTÉ PAR LE DÉFILEMENT --- */}
       <section ref={scrollContainerRef} className="relative h-screen overflow-hidden bg-gray-50 dark:bg-[#121212]">
-        <div className="absolute top-8 left-1/2 -translate-x-1/2 z-10 text-sm font-bold text-gray-400 uppercase tracking-widest font-kanit">
-          Faites défiler pour découvrir
+        <div className="absolute top-8 right-8 z-10 text-sm font-bold text-gray-400 font-urbanist text-2xl leading-none">
+          →
         </div>
         <div className="absolute bottom-8 right-8 z-10 text-sm font-bold text-gray-400 font-urbanist">
           01 / 02
@@ -277,52 +277,6 @@ export default function GestionAssoPage() {
           </div>
         </div>
       </section>
-
-      {/* --- FOOTER SPÉCIFIQUE --- */}
-      <footer className="py-16 px-4 bg-brand-dark text-white border-t border-gray-800">
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid md:grid-cols-4 gap-12 mb-12">
-            <div className="space-y-4">
-              <h3 className="text-xl font-bold font-urbanist">AlteractWeb</h3>
-              <p className="text-sm text-gray-400 font-kanit">Solutions logicielles métiers pour les associations et organisations engagées en Côte d&apos;Ivoire.</p>
-            </div>
-            
-            <div>
-              <h4 className="font-bold font-urbanist mb-4">Modules</h4>
-              <ul className="space-y-2 text-sm text-gray-400 font-kanit">
-                <li><Link href="/modules/gestion-adherents" className="hover:text-brand-primary transition-colors">Gestion des adhérents</Link></li>
-                <li><Link href="/modules/cotisations-paiements" className="hover:text-brand-primary transition-colors">Cotisations & Paiements</Link></li>
-                <li><Link href="/modules/evenements" className="hover:text-brand-primary transition-colors">Événements</Link></li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-bold font-urbanist mb-4">Ressources</h4>
-              <ul className="space-y-2 text-sm text-gray-400 font-kanit">
-                <li><Link href="/solutions/gestion-asso#fonctionnement" className="hover:text-brand-primary transition-colors">Comment ça marche</Link></li>
-                <li><Link href="/contact" className="hover:text-brand-primary transition-colors">Contact</Link></li>
-                <li><Link href="/politique-confidentialite" className="hover:text-brand-primary transition-colors">Politique de confidentialité</Link></li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-bold font-urbanist mb-4">Suivez-nous</h4>
-              <div className="flex gap-4">
-                <div className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-primary transition-colors cursor-pointer">
-                  <MessageSquare size={18} />
-                </div>
-                <div className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-primary transition-colors cursor-pointer">
-                  <Users size={18} />
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="pt-8 border-t border-gray-800 text-center text-sm text-gray-500 font-kanit">
-            &copy; {new Date().getFullYear()} AlteractWeb. Tous droits réservés.
-          </div>
-        </div>
-      </footer>
 
     </main>
   );
