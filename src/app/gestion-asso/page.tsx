@@ -2,12 +2,13 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import {
-  Users, CreditCard, Calendar, MessageSquare, PieChart,
-  CheckCircle2, ArrowRight, PlayCircle, Building2
+import { 
+  Users, CreditCard, Calendar, MessageSquare, PieChart, 
+  CheckCircle2, ArrowRight, PlayCircle, Star, Building2 
 } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -15,7 +16,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function GestionAssoPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const panelsRef = useRef<Array<HTMLDivElement | null>>([]);
+  const panelsRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -25,7 +26,7 @@ export default function GestionAssoPage() {
     const isMobile = window.matchMedia('(max-width: 768px)').matches;
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const scrollContainer = scrollContainerRef.current;
-    const panels = panelsRef.current.filter((panel): panel is HTMLDivElement => panel !== null);
+    const panels = panelsRef.current.filter((panel): panel is HTMLDivElement => Boolean(panel));
 
     if (isMobile || prefersReducedMotion || !scrollContainer || panels.length < 2) {
       return;
@@ -104,21 +105,16 @@ export default function GestionAssoPage() {
 
           <div className="relative group">
             <div className="absolute inset-0 bg-gradient-to-r from-brand-primary/20 to-brand-secondary/20 rounded-2xl blur-3xl opacity-50 group-hover:opacity-70 transition-opacity"></div>
-            <div className="relative rounded-[22px] border-[10px] border-white bg-[#f3f3f3] p-6 shadow-[0_18px_40px_rgba(0,0,0,0.08)]">
-              <div className="flex items-end justify-between gap-4 min-h-[360px]">
-                <div className="flex-1 flex items-end justify-center gap-6 pb-10">
-                  {[0, 1, 2].map((item) => (
-                    <div key={item} className="w-28 h-28 rounded-[12px] bg-[#e63946] shadow-sm relative">
-                      <div className="absolute inset-x-3 bottom-3 h-3 rounded-sm bg-white/90" />
-                    </div>
-                  ))}
-                </div>
-
-                <div className="w-52 h-64 rounded-[14px] bg-[#111f2d] p-4 flex flex-col justify-end gap-4">
-                  {[0, 1, 2, 3].map((item) => (
-                    <div key={item} className="h-12 rounded-md bg-[#2c3f52]" style={{ opacity: 1 - item * 0.1 }} />
-                  ))}
-                </div>
+            <div className="relative bg-gray-50 dark:bg-[#1a1a1a] rounded-2xl border border-gray-200 dark:border-gray-800 p-4 shadow-2xl transform group-hover:-translate-y-2 transition-transform duration-500">
+              <div className="aspect-video rounded-xl bg-white dark:bg-[#2a2a2a] flex items-center justify-center overflow-hidden">
+                <Image
+                  src="/images/dashboard-gestion-asso.png"
+                  alt="Tableau de bord gestion associative"
+                  width={1200}
+                  height={800}
+                  className="w-full h-full object-cover"
+                  priority
+                />
               </div>
             </div>
           </div>
@@ -137,7 +133,7 @@ export default function GestionAssoPage() {
         <div ref={containerRef} className="flex h-full w-[200vw]">
           
           {/* PANNEAU 1 : PRÉSENTATION */}
-          <div ref={(el) => { panelsRef.current[0] = el; }} className="w-screen h-full flex-shrink-0 flex items-center justify-center px-4">
+          <div ref={el => panelsRef.current[0] = el!} className="w-screen h-full flex-shrink-0 flex items-center justify-center px-4">
             <div className="container mx-auto max-w-5xl grid md:grid-cols-2 gap-16 items-center">
               <div className="space-y-6">
                 <h2 className="text-2xl md:text-4xl font-bold font-urbanist">Une gestion associative plus simple et mieux organisée</h2>
@@ -172,7 +168,7 @@ export default function GestionAssoPage() {
           </div>
 
           {/* PANNEAU 2 : FONCTIONNALITÉS CLÉS */}
-          <div ref={(el) => { panelsRef.current[1] = el; }} className="w-screen h-full flex-shrink-0 flex items-center justify-center px-4">
+          <div ref={el => panelsRef.current[1] = el!} className="w-screen h-full flex-shrink-0 flex items-center justify-center px-4">
             <div className="container mx-auto max-w-6xl">
               <h2 className="text-2xl md:text-4xl font-bold font-urbanist mb-12 text-center">Tous les outils pour faire vivre votre association</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -202,7 +198,7 @@ export default function GestionAssoPage() {
         <div className="container mx-auto max-w-5xl text-center space-y-16">
           <div className="space-y-4">
             <h2 className="text-2xl md:text-4xl font-bold font-urbanist">Concentrez-vous sur votre mission associative</h2>
-            <p className="text-lg text-gray-700 dark:text-gray-300 font-kanit">Une association mieux organisée, c&apos;est une équipe plus disponible et une communauté plus engagée.</p>
+            <p className="text-lg text-gray-700 dark:text-gray-300 font-kanit">Une association mieux organisée, c’est une équipe plus disponible et une communauté plus engagée.</p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
@@ -269,11 +265,38 @@ export default function GestionAssoPage() {
         </div>
       </section>
 
+      {/* --- PREUVE SOCIALE (PLACEHOLDERS) --- */}
+      <section className="py-24 px-4 bg-gray-50 dark:bg-[#121212]">
+        <div className="container mx-auto max-w-5xl text-center space-y-12">
+          <h2 className="text-2xl md:text-4xl font-bold font-urbanist">Ils nous font confiance</h2>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="p-6 bg-white dark:bg-brand-dark rounded-2xl border border-gray-200 dark:border-gray-800">
+              <div className="flex justify-center mb-4 text-yellow-400">
+                {[...Array(5)].map((_, i) => <Star key={i} size={20} fill="currentColor" />)}
+              </div>
+              <p className="font-kanit text-gray-700 dark:text-gray-300 italic mb-4">&ldquo;Un outil qui a transformé notre façon de gérer l’association. Plus de perte de temps !&rdquo;</p>
+              <p className="font-bold font-urbanist text-sm">— [Nom de l’association]</p>
+            </div>
+            
+            <div className="p-6 bg-white dark:bg-brand-dark rounded-2xl border border-gray-200 dark:border-gray-800 flex flex-col items-center justify-center">
+              <Building2 size={48} className="text-gray-300 dark:text-gray-600 mb-4" />
+              <p className="font-kanit text-gray-500 dark:text-gray-400 text-sm">Logo association cliente</p>
+            </div>
+
+            <div className="p-6 bg-white dark:bg-brand-dark rounded-2xl border border-gray-200 dark:border-gray-800">
+              <div className="text-3xl font-bold font-urbanist text-brand-primary mb-2">---</div>
+              <p className="font-kanit text-gray-700 dark:text-gray-300">Adhérents gérés via notre plateforme</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* --- CTA FINAL --- */}
       <section className="py-24 px-4 bg-brand-primary text-white">
         <div className="container mx-auto max-w-4xl text-center space-y-8">
-          <h2 className="text-3xl md:text-5xl font-bold font-urbanist">Simplifiez la gestion de votre association dès aujourd&apos;hui</h2>
-          <p className="text-xl font-kanit opacity-90">Gagnez du temps sur l&apos;administration et consacrez plus d&apos;énergie à vos membres, vos projets et votre mission.</p>
+          <h2 className="text-3xl md:text-5xl font-bold font-urbanist">Simplifiez la gestion de votre association dès aujourd’hui</h2>
+          <p className="text-xl font-kanit opacity-90">Gagnez du temps sur l’administration et consacrez plus d’énergie à vos membres, vos projets et votre mission.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <a
               href="https://wa.me/2250714074124?text=Bonjour%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20votre%20solution%20de%20gestion%20associative."
@@ -296,7 +319,7 @@ export default function GestionAssoPage() {
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div className="space-y-4">
               <h3 className="text-xl font-bold font-urbanist">AlteractWeb</h3>
-              <p className="text-sm text-gray-400 font-kanit">Solutions logicielles métiers pour les associations et organisations engagées en Côte d&apos;Ivoire.</p>
+              <p className="text-sm text-gray-400 font-kanit">Solutions logicielles métiers pour les associations et organisations engagées en Côte d’Ivoire.</p>
             </div>
             
             <div>

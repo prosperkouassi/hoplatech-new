@@ -2,7 +2,6 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -79,7 +78,7 @@ export default function GestionScolairePage() {
                 Commencer maintenant <ArrowRight size={18} />
               </Link>
               <Link href="#fonctionnement" className="px-8 py-4 border-2 border-gray-300 dark:border-gray-600 font-bold rounded-lg hover:border-brand-primary hover:text-brand-primary transition-colors font-kanit flex items-center justify-center gap-2">
-                <PlayCircle size={18} /> Demander une démonstration
+                <PlayCircle size={18} /> Comment ça marche
               </Link>
             </div>
 
@@ -105,20 +104,13 @@ export default function GestionScolairePage() {
             </p>
           </div>
 
-          <div className="relative group">
-            <div className="absolute inset-0 bg-gradient-to-r from-brand-primary/20 to-brand-secondary/20 rounded-2xl blur-3xl opacity-50 group-hover:opacity-70 transition-opacity"></div>
-            <div className="relative bg-gray-50 dark:bg-[#1a1a1a] rounded-2xl border border-gray-200 dark:border-gray-800 p-4 shadow-2xl transform group-hover:-translate-y-2 transition-transform duration-500">
-              <div className="aspect-video rounded-xl bg-white dark:bg-[#2a2a2a] flex items-center justify-center overflow-hidden">
-                <Image
-                  src="/dashboard-gestion-scolaire.png"
-                  alt="Tableau de bord gestion scolaire"
-                  width={1200}
-                  height={800}
-                  className="w-full h-full object-cover"
-                  priority
-                />
-              </div>
-            </div>
+          <div className="relative group flex justify-center">
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-blue-700/20 rounded-2xl blur-3xl opacity-50 group-hover:opacity-70 transition-opacity"></div>
+            <img
+              src="/dashboard-gestion-scolaire.png"
+              alt="Bannière gestion scolaire"
+              className="relative w-full max-w-[620px] rounded-[22px] border-[10px] border-white shadow-[0_18px_40px_rgba(0,0,0,0.08)] object-cover"
+            />
           </div>
         </div>
       </section>
