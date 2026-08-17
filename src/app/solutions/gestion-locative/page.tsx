@@ -102,25 +102,13 @@ export default function GestionLocativePage() {
             </p>
           </div>
 
-          <div className="relative group">
+          <div className="relative group flex justify-center">
             <div className="absolute inset-0 bg-gradient-to-r from-amber-500/20 to-yellow-700/20 rounded-2xl blur-3xl opacity-50 group-hover:opacity-70 transition-opacity"></div>
-            <div className="relative rounded-[22px] border-[10px] border-white bg-[#f3f3f3] p-6 shadow-[0_18px_40px_rgba(0,0,0,0.08)]">
-              <div className="flex items-end justify-between gap-4 min-h-[360px]">
-                <div className="flex-1 flex items-end justify-center gap-6 pb-10">
-                  {[0, 1, 2].map((item) => (
-                    <div key={item} className="w-28 h-28 rounded-[12px] bg-[#f5a300] shadow-sm relative">
-                      <div className="absolute inset-x-3 bottom-3 h-3 rounded-sm bg-white/90" />
-                    </div>
-                  ))}
-                </div>
-
-                <div className="w-52 h-64 rounded-[14px] bg-[#111f2d] p-4 flex flex-col justify-end gap-4">
-                  {[0, 1, 2, 3].map((item) => (
-                    <div key={item} className="h-12 rounded-md bg-[#2c3f52]" style={{ opacity: 1 - item * 0.1 }} />
-                  ))}
-                </div>
-              </div>
-            </div>
+            <img
+              src="/dashboard-gestion-locative.png"
+              alt="Bannière gestion locative"
+              className="relative w-full max-w-[620px] rounded-[22px] border-[10px] border-white shadow-[0_18px_40px_rgba(0,0,0,0.08)] object-cover"
+            />
           </div>
         </div>
       </section>
