@@ -8,7 +8,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { 
   Users, CreditCard, Calendar, MessageSquare, PieChart, 
-  CheckCircle2, ArrowRight, PlayCircle, Star, Building2 
+  CheckCircle2, ArrowRight, PlayCircle, Building2 
 } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -23,7 +23,7 @@ export default function GestionAssoPage() {
       return;
     }
 
-    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const scrollContainer = scrollContainerRef.current;
     const panels = panelsRef.current.filter((panel): panel is HTMLDivElement => Boolean(panel));
@@ -51,7 +51,6 @@ export default function GestionAssoPage() {
 
     return () => {
       ctx.revert();
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
 
@@ -75,31 +74,36 @@ export default function GestionAssoPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/contact?solution=gestion-asso" className="px-8 py-4 bg-brand-primary text-white font-bold rounded-lg hover:bg-red-600 transition-colors shadow-lg font-kanit flex items-center justify-center gap-2">
-                Commencer maintenant <ArrowRight size={18} />
-              </Link>
+              <a
+                href="https://wa.me/2250714074124?text=Bonjour%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20votre%20solution%20de%20gestion%20associative."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-4 bg-brand-primary text-white font-bold rounded-lg hover:bg-red-600 transition-colors shadow-lg font-kanit flex items-center justify-center gap-2"
+              >
+                Parler à un expert <ArrowRight size={18} aria-hidden="true" />
+              </a>
               <Link href="#fonctionnement" className="px-8 py-4 border-2 border-gray-300 dark:border-gray-600 font-bold rounded-lg hover:border-brand-primary hover:text-brand-primary transition-colors font-kanit flex items-center justify-center gap-2">
-                <PlayCircle size={18} /> Découvrir la solution
+                <PlayCircle size={18} aria-hidden="true" /> Découvrir la solution
               </Link>
             </div>
 
             {/* Indicateurs Dashboard Hero */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
               {[
-                { label: 'Adhérents', val: '---' },
-                { label: 'Cotisations', val: '---' },
-                { label: 'Événements', val: '---' },
-                { label: 'En attente', val: '---' }
-              ].map((stat, i) => (
-                <div key={i} className="bg-gray-50 dark:bg-[#1a1a1a] p-3 rounded-xl border border-gray-200 dark:border-gray-800 text-center">
-                  <div className="text-xl font-bold font-urbanist text-brand-primary">{stat.val}</div>
+                { label: 'Adhérents', val: 'Centralisés' },
+                { label: 'Cotisations', val: 'Suivies' },
+                { label: 'Événements', val: 'Planifiés' },
+                { label: 'Paiements', val: 'Tracés' }
+              ].map((stat) => (
+                <div key={stat.label} className="bg-gray-50 dark:bg-[#1a1a1a] p-3 rounded-xl border border-gray-200 dark:border-gray-800 text-center">
+                  <div className="text-sm font-bold font-urbanist text-brand-primary">{stat.val}</div>
                   <div className="text-xs text-gray-500 dark:text-gray-400 font-kanit">{stat.label}</div>
                 </div>
               ))}
             </div>
 
             <p className="text-sm text-gray-500 dark:text-gray-400 font-kanit flex items-center gap-2">
-              <CheckCircle2 size={16} className="text-brand-primary" /> Une solution pensée pour les associations, clubs et organisations engagées.
+              <CheckCircle2 size={16} className="text-brand-primary" aria-hidden="true" /> Une solution pensée pour les associations, clubs et organisations engagées.
             </p>
           </div>
 
@@ -122,23 +126,23 @@ export default function GestionAssoPage() {
       </section>
 
       {/* --- SCROLL HORIZONTAL PILOTÉ PAR LE DÉFILEMENT --- */}
-      <section ref={scrollContainerRef} className="relative h-screen overflow-hidden bg-gray-50 dark:bg-[#121212]">
-        <div className="absolute top-8 left-1/2 -translate-x-1/2 z-10 text-sm font-bold text-gray-400 uppercase tracking-widest font-kanit">
+      <section ref={scrollContainerRef} className="relative overflow-hidden bg-gray-50 dark:bg-[#121212] md:h-screen">
+        <div className="absolute top-8 left-1/2 -translate-x-1/2 z-10 hidden text-sm font-bold text-gray-400 uppercase tracking-widest font-kanit md:block">
           Faites défiler pour découvrir
         </div>
-        <div className="absolute bottom-8 right-8 z-10 text-sm font-bold text-gray-400 font-urbanist">
+        <div className="absolute bottom-8 right-8 z-10 hidden text-sm font-bold text-gray-400 font-urbanist md:block">
           01 / 02
         </div>
 
-        <div ref={containerRef} className="flex h-full w-[200vw]">
+        <div ref={containerRef} className="flex w-full flex-col md:h-full md:w-[200vw] md:flex-row">
           
           {/* PANNEAU 1 : PRÉSENTATION */}
-          <div ref={(el) => { panelsRef.current[0] = el; }} className="w-screen h-full flex-shrink-0 flex items-center justify-center px-4">
+          <div ref={(el) => { panelsRef.current[0] = el; }} className="flex min-h-screen w-full flex-shrink-0 items-center justify-center px-4 py-24 md:h-full md:min-h-0 md:w-screen md:py-0">
             <div className="container mx-auto max-w-5xl grid md:grid-cols-2 gap-16 items-center">
               <div className="space-y-6">
                 <h2 className="text-2xl md:text-4xl font-bold font-urbanist">Une gestion associative plus simple et mieux organisée</h2>
                 <p className="text-lg text-gray-700 dark:text-gray-300 font-kanit leading-relaxed">
-                 Notre solutions rassemble les informations essentielles dans un seul espace afin de vous aider à réduire les tâches manuelles et à mieux piloter votre association.
+                 Notre solution rassemble les informations essentielles dans un seul espace afin de vous aider à réduire les tâches manuelles et à mieux piloter votre association.
                 </p>
                 <ul className="space-y-3 font-kanit text-gray-700 dark:text-gray-300">
                   {['Centralisez les fiches de vos adhérents', 'Suivez les adhésions et les renouvellements', 'Gérez les cotisations et les paiements', 'Organisez vos événements', 'Communiquez facilement avec vos membres', 'Suivez vos recettes et vos dépenses'].map((item, i) => (
@@ -152,11 +156,11 @@ export default function GestionAssoPage() {
               <div className="bg-white dark:bg-[#1a1a1a] rounded-2xl border border-gray-200 dark:border-gray-800 p-6 shadow-lg space-y-4">
                  <div className="flex justify-between items-center p-3 bg-gray-50 dark:bg-[#2a2a2a] rounded-lg">
                    <span className="text-sm font-kanit text-gray-500">Adhérents actifs</span>
-                   <span className="font-bold font-urbanist text-brand-primary">---</span>
+                   <span className="font-bold font-urbanist text-brand-primary">Centralisés</span>
                  </div>
                  <div className="flex justify-between items-center p-3 bg-gray-50 dark:bg-[#2a2a2a] rounded-lg">
                    <span className="text-sm font-kanit text-gray-500">Cotisations ce mois</span>
-                   <span className="font-bold font-urbanist text-brand-primary">---</span>
+                   <span className="font-bold font-urbanist text-brand-primary">Suivies</span>
                  </div>
                  <div className="h-24 bg-gray-50 dark:bg-[#2a2a2a] rounded-lg flex items-end justify-around p-2 gap-1">
                    {[40, 65, 45, 80, 55, 70].map((h, i) => (
@@ -168,7 +172,7 @@ export default function GestionAssoPage() {
           </div>
 
           {/* PANNEAU 2 : FONCTIONNALITÉS CLÉS */}
-          <div ref={(el) => { panelsRef.current[1] = el; }} className="w-screen h-full flex-shrink-0 flex items-center justify-center px-4">
+          <div ref={(el) => { panelsRef.current[1] = el; }} className="flex min-h-screen w-full flex-shrink-0 items-center justify-center px-4 py-24 md:h-full md:min-h-0 md:w-screen md:py-0">
             <div className="container mx-auto max-w-6xl">
               <h2 className="text-2xl md:text-4xl font-bold font-urbanist mb-12 text-center">Tous les outils pour faire vivre votre association</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -229,19 +233,20 @@ export default function GestionAssoPage() {
           <h2 className="text-2xl md:text-4xl font-bold font-urbanist mb-12 text-center">Découvrez les outils disponibles</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { title: 'Gestion des adhérents', desc: 'Centralisez les fiches, coordonnées, statuts et historiques de vos adhérents.', link: '/modules/gestion-adherents' },
-              { title: 'Cotisations et paiements', desc: 'Gérez les cotisations, les paiements, les renouvellements et les éventuels retards.', link: '/modules/cotisations-paiements' },
-              { title: 'Événements associatifs', desc: 'Créez vos événements, recueillez les inscriptions et suivez les participants.', link: '/modules/evenements' }
-            ].map((prod, i) => (
-              <div key={i} className="bg-white dark:bg-brand-dark p-8 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm flex flex-col justify-between group">
+              { title: 'Gestion des adhérents', desc: 'Centralisez les fiches, coordonnées, statuts et historiques de vos adhérents.' },
+              { title: 'Cotisations et paiements', desc: 'Gérez les cotisations, les paiements, les renouvellements et les éventuels retards.' },
+              { title: 'Événements associatifs', desc: 'Créez vos événements, recueillez les inscriptions et suivez les participants.' }
+            ].map((prod) => (
+              <article key={prod.title} className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-gray-200 bg-white p-8 shadow-sm transition-all duration-500 hover:-translate-y-2 hover:border-brand-primary/30 hover:shadow-[0_22px_60px_rgba(18,18,18,0.10)] dark:border-gray-800 dark:bg-brand-dark">
+                <div aria-hidden="true" className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-brand-primary/0 blur-3xl transition-colors duration-500 group-hover:bg-brand-primary/15" />
                 <div className="space-y-4 mb-8">
-                  <h3 className="text-xl font-bold font-urbanist">{prod.title}</h3>
-                  <p className="text-gray-700 dark:text-gray-300 font-kanit">{prod.desc}</p>
+                  <h3 className="relative text-xl font-bold font-urbanist">{prod.title}</h3>
+                  <p className="relative text-gray-700 dark:text-gray-300 font-kanit">{prod.desc}</p>
                 </div>
-                <Link href={prod.link} className="inline-flex items-center gap-2 text-brand-primary font-bold font-kanit group-hover:gap-4 transition-all">
-                  Découvrir le module <ArrowRight size={18} />
-                </Link>
-              </div>
+                <div className="relative inline-flex items-center gap-2 text-sm text-brand-primary font-bold font-kanit">
+                  <CheckCircle2 size={18} aria-hidden="true" /> Inclus dans la solution
+                </div>
+              </article>
             ))}
           </div>
         </div>
@@ -265,29 +270,27 @@ export default function GestionAssoPage() {
         </div>
       </section>
 
-      {/* --- PREUVE SOCIALE (PLACEHOLDERS) --- */}
+      {/* --- ENGAGEMENTS --- */}
       <section className="py-24 px-4 bg-gray-50 dark:bg-[#121212]">
         <div className="container mx-auto max-w-5xl text-center space-y-12">
-          <h2 className="text-2xl md:text-4xl font-bold font-urbanist">Ils nous font confiance</h2>
+          <div className="mx-auto max-w-3xl space-y-4">
+            <span className="font-kanit text-sm font-bold uppercase tracking-[0.18em] text-brand-primary">Une technologie utile</span>
+            <h2 className="text-2xl md:text-4xl font-bold font-urbanist">Une solution conçue pour votre quotidien associatif</h2>
+            <p className="font-kanit text-lg leading-relaxed text-gray-700 dark:text-gray-300">Chaque fonctionnalité répond à un besoin concret de vos équipes, sans ajouter de complexité inutile.</p>
+          </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="p-6 bg-white dark:bg-brand-dark rounded-2xl border border-gray-200 dark:border-gray-800">
-              <div className="flex justify-center mb-4 text-yellow-400">
-                {[...Array(5)].map((_, i) => <Star key={i} size={20} fill="currentColor" />)}
-              </div>
-              <p className="font-kanit text-gray-700 dark:text-gray-300 italic mb-4">&ldquo;Un outil qui a transformé notre façon de gérer l’association. Plus de perte de temps !&rdquo;</p>
-              <p className="font-bold font-urbanist text-sm">— [Nom de l’association]</p>
-            </div>
-            
-            <div className="p-6 bg-white dark:bg-brand-dark rounded-2xl border border-gray-200 dark:border-gray-800 flex flex-col items-center justify-center">
-              <Building2 size={48} className="text-gray-300 dark:text-gray-600 mb-4" />
-              <p className="font-kanit text-gray-500 dark:text-gray-400 text-sm">Logo association cliente</p>
-            </div>
-
-            <div className="p-6 bg-white dark:bg-brand-dark rounded-2xl border border-gray-200 dark:border-gray-800">
-              <div className="text-3xl font-bold font-urbanist text-brand-primary mb-2">---</div>
-              <p className="font-kanit text-gray-700 dark:text-gray-300">Adhérents gérés via notre plateforme</p>
-            </div>
+            {[
+              { title: 'Simple à prendre en main', text: 'Une interface claire pour permettre à chaque responsable de retrouver rapidement les informations utiles.' },
+              { title: 'Accessible partout', text: 'Une plateforme disponible en ligne pour suivre l’association au bureau comme en déplacement.' },
+              { title: 'Prête à évoluer', text: 'Une base structurée pour accompagner la croissance de vos membres, activités et besoins.' }
+            ].map((item) => (
+              <article key={item.title} className="rounded-2xl border border-gray-200 bg-white p-7 text-left dark:border-gray-800 dark:bg-brand-dark">
+                <CheckCircle2 size={22} className="text-brand-primary" aria-hidden="true" />
+                <h3 className="mt-6 font-urbanist text-xl font-bold">{item.title}</h3>
+                <p className="mt-3 font-kanit leading-7 text-gray-700 dark:text-gray-300">{item.text}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>

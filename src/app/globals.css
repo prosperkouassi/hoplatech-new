@@ -1,32 +1,34 @@
 /* src/app/globals.css */
 
-/* 1. TOUJOURS EN PREMIER : Imports externes */
-@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&family=Kanit:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
+
 
 /* Configuration du Dark Mode natif Tailwind v4 */
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* 2. ENSUITE : Configuration du thème */
 @theme {
-  /* Polices */
-  --font-urbanist: 'Urbanist', sans-serif;
-  --font-kanit: 'Kanit', sans-serif;
-  
-  /* Couleurs de marque HoplaTech */
+  /* Polices auto-hébergées et optimisées par next/font */
+  --font-urbanist: var(--font-urbanist-loaded), sans-serif;
+  --font-kanit: var(--font-kanit-loaded), sans-serif;
+
+  /* Couleurs de marque AlteractWeb */
   --color-brand-primary: #E63946;
   --color-brand-secondary: #F4A261;
   --color-brand-dark: #1a1a1a;
   --color-brand-light: #f8f9fa;
 }
 
-/* 3. ENFIN : Styles globaux */
 body {
-  font-family: var(--font-kanit);
+  font-family: var(--font-kanit-loaded), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-urbanist);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-urbanist-loaded), sans-serif;
 }

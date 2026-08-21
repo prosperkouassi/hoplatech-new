@@ -1,10 +1,25 @@
 // src/app/layout.tsx
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Kanit, Urbanist } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 
 const siteUrl = "https://alteractweb.com";
+
+const urbanist = Urbanist({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-urbanist-loaded",
+  display: "swap",
+});
+
+const kanit = Kanit({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-kanit-loaded",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -90,8 +105,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr-CI" suppressHydrationWarning>
-      <body className="bg-white dark:bg-brand-dark text-brand-dark dark:text-white transition-colors duration-300 min-h-screen flex flex-col">
-        <script
+      <body className={`${urbanist.variable} ${kanit.variable} bg-white dark:bg-brand-dark text-brand-dark dark:text-white transition-colors duration-300 min-h-screen flex flex-col`}
+> <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
