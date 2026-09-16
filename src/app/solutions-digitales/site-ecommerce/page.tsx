@@ -1,35 +1,54 @@
-// src/app/solutions-digitales/site-ecommerce/page.tsx
 import type { Metadata } from 'next';
 import EcommerceWebsitePageClient from './EcommerceWebsitePageClient';
 
+const pageUrl =
+  'https://alteractweb.com/solutions-digitales/site-ecommerce';
+
 export const metadata: Metadata = {
-  title: "Création de site e-commerce en Côte d’Ivoire | AlteractWeb",
+  title: "Création site e-commerce Côte d’Ivoire | AlteractWeb",
   description:
-    "AlteractWeb conçoit des sites e-commerce sur mesure en Côte d’Ivoire : catalogue, paiement en ligne, Mobile Money, commandes, livraison, SEO et conversion.",
+    "Création de sites e-commerce en Côte d’Ivoire : boutique en ligne, Mobile Money, paiement, commandes, livraison et SEO avec AlteractWeb.",
   alternates: {
-    canonical: 'https://alteractweb.com/solutions-digitales/site-ecommerce',
+    canonical: pageUrl,
   },
   openGraph: {
     title: "Création de site e-commerce en Côte d’Ivoire | AlteractWeb",
     description:
-      "Transformez votre catalogue en boutique en ligne rapide, rassurante et conçue pour vendre.",
-    url: 'https://alteractweb.com/solutions-digitales/site-ecommerce',
+      "Créez une boutique en ligne rapide et rassurante avec catalogue, paiement, Mobile Money, gestion des commandes et livraison.",
+    url: pageUrl,
     type: 'website',
+    locale: 'fr_CI',
+    siteName: 'AlteractWeb',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Création de site e-commerce en Côte d’Ivoire | AlteractWeb",
+    description:
+      "Boutique en ligne sur mesure, Mobile Money, commandes, livraison et référencement naturel.",
   },
 };
 
 const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
+  '@id': `${pageUrl}#service`,
   name: "Création de site e-commerce en Côte d’Ivoire",
-  serviceType: 'Conception et développement de boutique en ligne',
-  url: 'https://alteractweb.com/solutions-digitales/site-ecommerce',
+  alternateName: [
+    'Création de boutique en ligne',
+    'Création de site marchand',
+    'Développement de boutique e-commerce',
+  ],
+  serviceType: 'Création et développement de boutique en ligne',
+  url: pageUrl,
+  description:
+    "AlteractWeb conçoit des sites e-commerce et boutiques en ligne en Côte d’Ivoire avec catalogue, paiement en ligne, Mobile Money, gestion des commandes, livraison et optimisation SEO.",
   areaServed: {
     '@type': 'Country',
     name: "Côte d’Ivoire",
   },
   provider: {
     '@type': 'Organization',
+    '@id': 'https://alteractweb.com/#organization',
     name: 'AlteractWeb',
     url: 'https://alteractweb.com',
   },
@@ -111,11 +130,15 @@ export default function SiteEcommercePage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceSchema),
+        }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema),
+        }}
       />
       <EcommerceWebsitePageClient />
     </>

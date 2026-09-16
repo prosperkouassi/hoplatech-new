@@ -193,11 +193,11 @@ export default function RestaurantWebsitePageClient() {
               Création de site web pour restaurant en Côte d’Ivoire
             </span>
             <h1 className="mt-6 max-w-4xl font-urbanist text-4xl font-bold leading-[1.08] text-white sm:text-5xl lg:text-6xl">
-              L’art de recevoir commence{' '}
-              <span className="bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">avant la première bouchée</span>
+              Création de site web pour restaurant :{' '}
+              <span className="bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">transformez vos visiteurs en clients</span>
             </h1>
             <p className="mt-6 max-w-2xl font-kanit text-lg leading-relaxed text-white/85 sm:text-xl">
-              Nous créons des expériences numériques qui prolongent l’excellence de votre table, éveillent la curiosité et transforment vos visiteurs en clients.
+              AlteractWeb conçoit des sites web pour restaurants en Côte d’Ivoire, pensés pour présenter votre carte, faciliter les réservations de table et les commandes, et attirer de nouveaux clients.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-brand-primary px-7 py-3.5 font-kanit font-bold text-white shadow-lg transition hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black">
@@ -226,9 +226,9 @@ export default function RestaurantWebsitePageClient() {
             L’expérience client commence bien avant l’arrivée en salle
           </h2>
           <p className="mx-auto mt-6 max-w-3xl font-kanit text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-            AlteractWeb conçoit une plateforme qui reflète votre cuisine et votre atmosphère.
-            Elle attire l’attention, rassure vos futurs clients et leur permet de réserver ou
-            commander sans friction.
+            AlteractWeb accompagne les restaurants, bars, lounges et établissements de restauration dans la création de leur site internet en Côte d’Ivoire.
+            Nous concevons des sites rapides et adaptés au mobile qui valorisent votre cuisine,
+            facilitent la réservation ou la commande et renforcent votre visibilité locale.
           </p>
         </div>
       </section>
@@ -284,8 +284,8 @@ export default function RestaurantWebsitePageClient() {
         <div className="container mx-auto max-w-6xl">
           <div className="mx-auto max-w-3xl text-center">
             <span className="font-kanit text-xs font-bold uppercase tracking-[0.18em] text-brand-primary">Pourquoi créer un site pour votre restaurant ?</span>
-            <h2 className="mt-4 font-urbanist text-3xl font-bold leading-tight sm:text-4xl">Votre site doit donner envie de venir, pas seulement afficher un menu</h2>
-            <p className="mt-5 font-kanit text-lg leading-relaxed text-gray-700 dark:text-gray-300">Une présence digitale maîtrisée vous aide à attirer, convaincre et fidéliser votre clientèle.</p>
+            <h2 className="mt-4 font-urbanist text-3xl font-bold leading-tight sm:text-4xl">Pourquoi créer un site internet professionnel pour votre restaurant ?</h2>
+            <p className="mt-5 font-kanit text-lg leading-relaxed text-gray-700 dark:text-gray-300">Un site de restaurant professionnel vous aide à améliorer votre visibilité, présenter votre menu, faciliter les réservations et commandes directes et fidéliser votre clientèle.</p>
           </div>
           <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {benefits.map((benefit) => {

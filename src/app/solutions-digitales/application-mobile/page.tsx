@@ -1,35 +1,56 @@
-// src/app/solutions-digitales/application-mobile/page.tsx
 import type { Metadata } from 'next';
 import MobileApplicationPageClient from './MobileApplicationPageClient';
 
+const pageUrl =
+  'https://alteractweb.com/solutions-digitales/application-mobile';
+
 export const metadata: Metadata = {
-  title: "Développement d’application mobile sur mesure à Abidjan | AlteractWeb",
+  title: "Développement application mobile Côte d’Ivoire | AlteractWeb",
   description:
-    "AlteractWeb conçoit des applications mobiles sur mesure à Abidjan : cadrage MVP, UX/UI, développement iOS et Android, API, tests, stores et maintenance.",
+    "Développement d’applications mobiles sur mesure en Côte d’Ivoire : iOS, Android, UX/UI, API, MVP, tests, publication stores et maintenance.",
   alternates: {
-    canonical: 'https://alteractweb.com/solutions-digitales/application-mobile',
+    canonical: pageUrl,
   },
   openGraph: {
-    title: "Développement d’application mobile sur mesure à Abidjan | AlteractWeb",
+    title:
+      "Développement d’application mobile en Côte d’Ivoire | AlteractWeb",
     description:
-      "Transformez votre idée en application mobile fiable, intuitive et évolutive pour vos clients ou vos équipes.",
-    url: 'https://alteractweb.com/solutions-digitales/application-mobile',
+      "Transformez votre idée en application mobile iOS et Android fiable, intuitive et évolutive avec AlteractWeb.",
+    url: pageUrl,
     type: 'website',
+    locale: 'fr_CI',
+    siteName: 'AlteractWeb',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title:
+      "Développement d’application mobile en Côte d’Ivoire | AlteractWeb",
+    description:
+      "Applications mobiles sur mesure : MVP, UX/UI, iOS, Android, API, tests et accompagnement au lancement.",
   },
 };
 
 const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
-  name: "Développement d’application mobile sur mesure à Abidjan",
+  '@id': `${pageUrl}#service`,
+  name: "Développement d’application mobile en Côte d’Ivoire",
+  alternateName: [
+    'Création d’application mobile',
+    'Développement application iOS et Android',
+    'Conception d’application mobile sur mesure',
+  ],
   serviceType: 'Conception et développement d’applications mobiles',
-  url: 'https://alteractweb.com/solutions-digitales/application-mobile',
+  url: pageUrl,
+  description:
+    "AlteractWeb conçoit et développe des applications mobiles sur mesure en Côte d’Ivoire pour iOS et Android, avec cadrage MVP, UX/UI, API, tests, publication et maintenance.",
   areaServed: {
     '@type': 'Country',
     name: "Côte d’Ivoire",
   },
   provider: {
     '@type': 'Organization',
+    '@id': 'https://alteractweb.com/#organization',
     name: 'AlteractWeb',
     url: 'https://alteractweb.com',
   },
@@ -111,11 +132,15 @@ export default function ApplicationMobilePage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceSchema),
+        }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema),
+        }}
       />
       <MobileApplicationPageClient />
     </>

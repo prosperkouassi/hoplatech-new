@@ -330,13 +330,13 @@ export default function MobileApplicationPageClient() {
               Développement d’application mobile sur mesure
             </span>
             <h1 className="mt-6 max-w-4xl font-urbanist text-4xl font-bold leading-[1.08] text-white sm:text-5xl lg:text-6xl">
-              Transformez votre idée en une{' '}
+              Développement d’application mobile en Côte d’Ivoire :{' '}
               <span className="bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">
-                application utile et adoptée
+                transformez votre idée en solution digitale
               </span>
             </h1>
             <p className="mt-6 max-w-2xl font-kanit text-lg leading-relaxed text-white/80 sm:text-xl">
-              Nous concevons des applications mobiles fiables, intuitives et évolutives pour digitaliser un service, engager vos clients ou simplifier le travail de vos équipes.
+              AlteractWeb développe des applications mobiles sur mesure en Côte d’Ivoire pour iOS et Android, conçues pour digitaliser vos services, engager vos clients et simplifier le travail de vos équipes.
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
@@ -422,9 +422,9 @@ export default function MobileApplicationPageClient() {
       <section className="px-4 py-24 sm:py-28">
         <div className="container mx-auto max-w-4xl text-center">
           <span className="font-kanit text-xs font-bold uppercase tracking-[0.18em] text-brand-primary">De l’idée au produit digital</span>
-          <h2 className="mt-4 font-urbanist text-3xl font-bold leading-tight sm:text-4xl">Une expertise globale pour votre application mobile</h2>
+          <h2 className="mt-4 font-urbanist text-3xl font-bold leading-tight sm:text-4xl">Création d’application mobile sur mesure, de l’idée au lancement</h2>
           <div className="mx-auto mt-6 max-w-3xl space-y-5 font-kanit text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-            <p>AlteractWeb accompagne les TPE, PME, organisations et porteurs de projets dans la conception d’applications mobiles adaptées à leurs usages réels.</p>
+            <p>AlteractWeb accompagne les TPE, PME, organisations et porteurs de projets à Abidjan et en Côte d’Ivoire dans la conception et le développement d’applications mobiles adaptées à leurs usages réels.</p>
             <p>Designers et développeurs travaillent ensemble pour construire une solution cohérente, depuis les premiers parcours jusqu’au lancement et aux évolutions.</p>
           </div>
         </div>

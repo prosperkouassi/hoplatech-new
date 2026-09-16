@@ -1,35 +1,54 @@
-// src/app/solutions-digitales/ui-ux-design/page.tsx
 import type { Metadata } from 'next';
 import UiUxDesignPageClient from './UiUxDesignPageClient';
 
+const pageUrl =
+  'https://alteractweb.com/solutions-digitales/ui-ux-design';
+
 export const metadata: Metadata = {
-  title: "Agence UI/UX Design et conception Figma à Abidjan | AlteractWeb",
+  title: "Agence UI/UX Design Côte d’Ivoire & Figma | AlteractWeb",
   description:
-    "AlteractWeb conçoit à Abidjan des interfaces UI/UX sur Figma : recherche, wireframes, maquettes web et mobile, prototypes, design systems et handoff développeur.",
+    "Agence UI/UX Design en Côte d’Ivoire : wireframes, maquettes Figma, prototypes web et mobile, design systems et handoff développeur avec AlteractWeb.",
   alternates: {
-    canonical: 'https://alteractweb.com/solutions-digitales/ui-ux-design',
+    canonical: pageUrl,
   },
   openGraph: {
-    title: "Agence UI/UX Design et conception Figma à Abidjan | AlteractWeb",
+    title: "Agence UI/UX Design en Côte d’Ivoire | AlteractWeb",
     description:
-      "Transformez votre idée en une interface claire, esthétique et prête à être développée.",
-    url: 'https://alteractweb.com/solutions-digitales/ui-ux-design',
+      "Transformez votre idée en interface web ou mobile claire et prête à être développée grâce à notre expertise UX/UI et Figma.",
+    url: pageUrl,
     type: 'website',
+    locale: 'fr_CI',
+    siteName: 'AlteractWeb',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Agence UI/UX Design en Côte d’Ivoire | AlteractWeb",
+    description:
+      "UX Design, UI Design, wireframes, maquettes Figma, prototypes et design systems pour vos produits digitaux.",
   },
 };
 
 const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
-  name: 'UI/UX Design et conception Figma à Abidjan',
+  '@id': `${pageUrl}#service`,
+  name: "UI/UX Design et conception Figma en Côte d’Ivoire",
+  alternateName: [
+    'Agence UI/UX Design',
+    'Conception UX/UI',
+    'Création de maquettes Figma',
+  ],
   serviceType: 'Conception UX/UI, prototypage et design system',
-  url: 'https://alteractweb.com/solutions-digitales/ui-ux-design',
+  url: pageUrl,
+  description:
+    "AlteractWeb conçoit à Abidjan et en Côte d’Ivoire des interfaces UX/UI pour sites web, applications mobiles et produits digitaux avec wireframes, maquettes Figma, prototypes et design systems.",
   areaServed: {
     '@type': 'Country',
     name: "Côte d’Ivoire",
   },
   provider: {
     '@type': 'Organization',
+    '@id': 'https://alteractweb.com/#organization',
     name: 'AlteractWeb',
     url: 'https://alteractweb.com',
   },
@@ -111,11 +130,15 @@ export default function UiUxDesignPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceSchema),
+        }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema),
+        }}
       />
       <UiUxDesignPageClient />
     </>

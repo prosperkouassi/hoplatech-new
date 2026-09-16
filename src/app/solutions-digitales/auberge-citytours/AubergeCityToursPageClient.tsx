@@ -201,13 +201,13 @@ export default function AubergeCityToursPageClient() {
               Auberges & City Tours en Côte d’Ivoire
             </span>
             <h1 className="mt-6 max-w-4xl font-urbanist text-4xl font-bold leading-[1.08] text-white sm:text-5xl lg:text-6xl">
-              Réinventez les vacances{' '}
+              Création de site web pour auberge et City Tours en Côte d’Ivoire :{' '}
               <span className="bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">
-                dès le premier clic
+                inspirez dès le premier clic
               </span>
             </h1>
             <p className="mt-6 max-w-2xl font-kanit text-lg leading-relaxed text-white/85 sm:text-xl">
-              Faites rêver les voyageurs avant leur arrivée avec un site immersif qui valorise vos hébergements, vos circuits et vos expériences locales.
+              AlteractWeb crée des sites web pour auberges, maisons d’hôtes, City Tours et activités touristiques en Côte d’Ivoire, pensés pour valoriser vos offres et développer les réservations directes.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-brand-primary px-7 py-3.5 font-kanit font-bold text-white shadow-lg transition hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black">
@@ -233,10 +233,10 @@ export default function AubergeCityToursPageClient() {
             Auberge & City Tours
           </span>
           <h2 className="mt-4 font-urbanist text-3xl font-bold leading-tight sm:text-4xl">
-            Créez des expériences uniques
+            Un site touristique conçu pour valoriser vos hébergements et vos circuits
           </h2>
           <p className="mx-auto mt-6 max-w-3xl font-kanit text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-            AlteractWeb transforme votre visibilité en ligne en levier d’acquisition. Nous concevons un site immersif et performant qui donne envie de partir, valorise votre offre et facilite la réservation dès le premier clic.
+            AlteractWeb accompagne les auberges, maisons d’hôtes, guides et opérateurs de City Tours dans la création de leur site internet en Côte d’Ivoire. Nous concevons des sites touristiques immersifs et performants qui valorisent les hébergements, circuits et expériences locales tout en facilitant la réservation directe.
           </p>
         </div>
       </section>

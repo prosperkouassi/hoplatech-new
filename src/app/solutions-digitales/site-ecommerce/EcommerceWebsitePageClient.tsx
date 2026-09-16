@@ -291,13 +291,13 @@ export default function EcommerceWebsitePageClient() {
               Création de site e-commerce
             </span>
             <h1 className="mt-6 max-w-4xl font-urbanist text-4xl font-bold leading-[1.08] text-white sm:text-5xl lg:text-6xl">
-              Une boutique en ligne conçue pour{' '}
+              Création de site e-commerce en Côte d’Ivoire :{' '}
               <span className="bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">
-                transformer les visites en ventes
+                transformez vos visites en ventes
               </span>
             </h1>
             <p className="mt-6 max-w-2xl font-kanit text-lg leading-relaxed text-white/80 sm:text-xl">
-              Mettez en valeur vos produits, simplifiez l’achat et développez votre activité avec une plateforme rapide, rassurante et adaptée à vos clients.
+              AlteractWeb crée des boutiques en ligne en Côte d’Ivoire conçues pour valoriser vos produits, faciliter le paiement et la livraison et transformer davantage de visiteurs en clients.
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
@@ -385,11 +385,11 @@ export default function EcommerceWebsitePageClient() {
             Votre activité accessible partout
           </span>
           <h2 className="mt-4 font-urbanist text-3xl font-bold leading-tight sm:text-4xl">
-            Nous réalisons votre site e-commerce sur mesure
+            Création de boutique en ligne sur mesure en Côte d’Ivoire
           </h2>
           <div className="mx-auto mt-6 max-w-3xl space-y-5 font-kanit text-lg leading-relaxed text-gray-700 dark:text-gray-300">
             <p>
-              AlteractWeb accompagne les entreprises, les marques et les porteurs de projets dans la création de boutiques modernes, performantes et évolutives.
+              AlteractWeb accompagne les entreprises, les marques et les porteurs de projets dans la création de sites e-commerce et boutiques en ligne en Côte d’Ivoire, modernes, performants et évolutifs.
             </p>
             <p>
               Votre plateforme est pensée pour valoriser les produits, faciliter la gestion quotidienne et offrir une expérience d’achat claire à chaque étape.

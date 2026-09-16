@@ -246,14 +246,14 @@ export default function CorporateWebsitePageClient() {
             </span>
 
             <h1 className="mt-6 max-w-4xl font-urbanist text-4xl font-bold leading-[1.08] text-white sm:text-5xl lg:text-6xl">
-              Un site professionnel qui donne de la{' '}
+              Création de site internet pour entreprise :{' '}
               <span className="bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">
-                force à votre image
+                donnez de la force à votre image
               </span>
             </h1>
 
             <p className="mt-6 max-w-2xl font-kanit text-lg leading-relaxed text-white/80 sm:text-xl">
-              Présentez votre entreprise, valorisez vos expertises et transformez votre présence en ligne en véritable outil de crédibilité et de développement.
+              AlteractWeb crée des sites vitrines professionnels pour les entreprises en Côte d’Ivoire, conçus pour présenter vos activités, valoriser vos expertises et générer des prises de contact.
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
@@ -336,11 +336,11 @@ export default function CorporateWebsitePageClient() {
             Votre vitrine, votre premier argument
           </span>
           <h2 className="mt-4 font-urbanist text-3xl font-bold leading-tight sm:text-4xl">
-            Nous réalisons votre site web sur mesure
+            Création de site vitrine professionnel sur mesure
           </h2>
           <div className="mx-auto mt-6 max-w-3xl space-y-5 font-kanit text-lg leading-relaxed text-gray-700 dark:text-gray-300">
             <p>
-              AlteractWeb accompagne les entreprises, institutions, indépendants et porteurs de projets dans la création de sites vitrines modernes, élégants et performants.
+              AlteractWeb accompagne les entreprises, institutions, indépendants et porteurs de projets dans la création de sites internet professionnels en Côte d’Ivoire, modernes, élégants et performants.
             </p>
             <p>
               Chaque interface est pensée pour présenter clairement vos activités, valoriser vos services et renforcer durablement votre crédibilité en ligne.

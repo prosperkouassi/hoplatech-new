@@ -233,15 +233,16 @@ export default function HotelWebsitePageClient() {
             </span>
 
             <h1 className="mt-6 max-w-4xl font-urbanist text-4xl font-bold leading-[1.08] text-white sm:text-5xl lg:text-6xl">
-              Transformez votre présence digitale en{' '}
+              Création de site web pour hôtel :{' '}
               <span className="bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">
-                moteur de réservations
+                transformez votre présence digitale
               </span>
             </h1>
 
             <p className="mt-6 max-w-2xl font-kanit text-lg leading-relaxed text-white/85 sm:text-xl">
-              Séduisez les voyageurs locaux et internationaux dès le premier clic avec un site élégant,
-              performant et pensé pour valoriser votre établissement.
+              AlteractWeb conçoit des sites web pour hôtels en Côte d’Ivoire,
+              pensés pour présenter vos chambres, développer vos réservations
+              directes et séduire les voyageurs locaux et internationaux.
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
@@ -285,9 +286,11 @@ export default function HotelWebsitePageClient() {
             Faites de votre hôtel une destination incontournable
           </h2>
           <p className="mx-auto mt-6 max-w-3xl font-kanit text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-            AlteractWeb transforme votre présence numérique en véritable moteur de croissance.
-            Nous concevons un site élégant et performant qui reflète le standing de votre
-            établissement, rassure les voyageurs et facilite leur passage à la réservation.
+            AlteractWeb accompagne les hôtels, résidences et maisons d&apos;hôtes
+            dans la création de leur site internet en Côte d&apos;Ivoire.
+            Nous concevons des sites hôteliers élégants et performants qui
+            valorisent les chambres et les services de votre établissement,
+            rassurent les voyageurs et facilitent la réservation directe.
           </p>
         </div>
       </section>
@@ -411,10 +414,12 @@ export default function HotelWebsitePageClient() {
               Pourquoi créer un site hôtelier ?
             </span>
             <h2 className="mt-4 font-urbanist text-3xl font-bold leading-tight sm:text-4xl">
-              Votre site doit donner envie de réserver, pas seulement informer
+              Pourquoi créer un site internet professionnel pour votre hôtel ?
             </h2>
             <p className="mt-5 font-kanit text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-              Une présence digitale maîtrisée vous aide à attirer, convaincre et fidéliser vos voyageurs.
+              Un site hôtelier professionnel vous permet de renforcer votre visibilité,
+              présenter votre établissement, développer les réservations directes et
+              réduire votre dépendance aux plateformes de réservation externes.
             </p>
           </div>
 

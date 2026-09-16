@@ -319,10 +319,10 @@ export default function UiUxDesignPageClient() {
           <div>
             <span className="inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-2 font-kanit text-xs font-bold uppercase tracking-[0.18em] text-white backdrop-blur-sm">UI/UX Design · Figma</span>
             <h1 className="mt-6 max-w-4xl font-urbanist text-4xl font-bold leading-[1.08] text-white sm:text-5xl lg:text-6xl">
-              Alliez esthétique, clarté et{' '}
-              <span className="bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">performance d’usage</span>
+              Agence UI/UX Design en Côte d’Ivoire :{' '}
+              <span className="bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">des interfaces pensées pour vos utilisateurs</span>
             </h1>
-            <p className="mt-6 max-w-2xl font-kanit text-lg leading-relaxed text-white/80 sm:text-xl">Nous transformons vos idées en interfaces web et mobiles intuitives, cohérentes et prêtes à être développées.</p>
+            <p className="mt-6 max-w-2xl font-kanit text-lg leading-relaxed text-white/80 sm:text-xl">AlteractWeb conçoit à Abidjan et en Côte d’Ivoire des interfaces UI/UX pour sites web et applications mobiles : wireframes, maquettes Figma, prototypes interactifs et design systems.</p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-brand-primary px-7 py-3.5 font-kanit font-bold text-white shadow-lg transition hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black">Parlons de votre interface <ArrowRight size={18} /></a>
               <a href="#processus-design" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-white/30 bg-white/10 px-7 py-3.5 font-kanit font-bold text-white backdrop-blur-sm transition hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white">Découvrir notre processus <ChevronRight size={18} /></a>
@@ -365,10 +365,10 @@ export default function UiUxDesignPageClient() {
       <section className="px-4 py-24 sm:py-28">
         <div className="container mx-auto max-w-4xl text-center">
           <span className="font-kanit text-xs font-bold uppercase tracking-[0.18em] text-brand-primary">De l’idée à l’interface</span>
-          <h2 className="mt-4 font-urbanist text-3xl font-bold leading-tight sm:text-4xl">Un concept graphique Figma structuré autour de l’utilisateur</h2>
+          <h2 className="mt-4 font-urbanist text-3xl font-bold leading-tight sm:text-4xl">Conception UI/UX et maquettes Figma pour vos produits digitaux</h2>
           <div className="mx-auto mt-6 max-w-3xl space-y-5 font-kanit text-lg leading-relaxed text-gray-700 dark:text-gray-300">
             <p>Un design efficace repose sur une vision claire, des parcours bien pensés et une planification rigoureuse avant la recherche esthétique.</p>
-            <p>AlteractWeb réunit UX et UI pour créer des produits digitaux compréhensibles, désirables et suffisamment structurés pour être développés sereinement.</p>
+            <p>AlteractWeb réunit UX Design et UI Design pour créer en Côte d’Ivoire des produits digitaux compréhensibles, attractifs et suffisamment structurés pour être développés sereinement.</p>
           </div>
         </div>
       </section>
