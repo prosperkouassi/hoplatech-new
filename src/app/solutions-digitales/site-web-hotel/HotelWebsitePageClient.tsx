@@ -493,6 +493,249 @@ export default function HotelWebsitePageClient() {
           </div>
         </div>
       </section>
+            {/* SITES TÉMOINS */}
+      <section className="relative overflow-hidden bg-white px-4 py-24 dark:bg-brand-dark sm:py-28">
+        {/* Décoration de fond */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-40 -top-40 h-96 w-96 rounded-full border border-brand-primary/10"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-52 -left-52 h-[420px] w-[420px] rounded-full border border-brand-primary/10"
+        />
+
+        <div className="container relative z-10 mx-auto max-w-6xl">
+          {/* En-tête centré */}
+          <div className="mx-auto max-w-4xl text-center">
+            <div className="flex items-center justify-center gap-4">
+              <span className="hidden h-px w-14 bg-brand-primary/50 sm:block" />
+
+              <span className="font-kanit text-xs font-bold uppercase tracking-[0.22em] text-brand-primary">
+                Nos sites témoins
+              </span>
+
+              <span className="hidden h-px w-14 bg-brand-primary/50 sm:block" />
+            </div>
+
+            <h2 className="mt-5 font-urbanist text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
+              Découvrez votre futur{' '}
+              <span className="text-brand-primary">
+                site hôtelier
+              </span>
+            </h2>
+
+            <p className="mx-auto mt-6 max-w-3xl font-kanit text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+              Deux univers, deux identités. Explorez nos sites témoins et découvrez
+              comment AlteractWeb peut valoriser votre établissement et simplifier
+              l&apos;expérience de réservation de vos clients.
+            </p>
+          </div>
+
+          {/* Les deux sites */}
+          <div className="mt-14 grid gap-7 lg:grid-cols-2">
+            {/* HÔTEL PLAGE */}
+            <article className="group overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-2xl dark:border-gray-800 dark:bg-[#1a1a1a]">
+              {/* Grande image */}
+              <a
+                href="https://hotel-plage-cyan.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Découvrir le site témoin Hôtel Plage"
+                className="relative block h-[340px] overflow-hidden sm:h-[420px]"
+              >
+                <img
+                  src="/images/hotel/hotel-plage-temoin.webp"
+                  alt="Aperçu du site témoin Hôtel Plage conçu par AlteractWeb"
+                  className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]"
+                />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/15 to-transparent" />
+
+                <div className="absolute left-7 top-7">
+                  <p className="font-kanit text-xs font-medium uppercase tracking-[0.35em] text-white">
+                    Hôtel Plage
+                  </p>
+
+                  <div className="mt-3 h-px w-14 bg-white/70" />
+                </div>
+
+                <div className="absolute bottom-7 left-7 right-7">
+                  <p className="max-w-xs font-urbanist text-2xl font-medium leading-tight text-white sm:text-3xl">
+                    L&apos;élégance
+                    <br />
+                    les pieds dans l&apos;eau
+                  </p>
+                </div>
+              </a>
+
+              {/* Informations */}
+              <div className="p-7 sm:p-8">
+                <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="max-w-sm">
+                    <h3 className="font-urbanist text-2xl font-bold sm:text-3xl">
+                      Hôtel Plage
+                    </h3>
+
+                    <p className="mt-2 font-kanit leading-relaxed text-gray-600 dark:text-gray-400">
+                      Une expérience élégante pensée pour les établissements
+                      balnéaires.
+                    </p>
+                  </div>
+
+                  <a
+                    href="https://hotel-plage-cyan.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-12 flex-shrink-0 items-center justify-center gap-3 rounded-lg bg-brand-primary px-6 py-3 font-kanit font-bold text-white shadow-sm transition hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 dark:focus:ring-offset-brand-dark"
+                  >
+                    Découvrez le site
+                    <ArrowRight size={18} />
+                  </a>
+                </div>
+
+                <div className="mt-7 flex flex-wrap gap-x-7 gap-y-4 border-t border-gray-100 pt-6 font-kanit text-sm text-gray-600 dark:border-gray-800 dark:text-gray-300">
+                  <span className="flex items-center gap-2">
+                    <BedDouble
+                      size={19}
+                      className="text-brand-primary"
+                    />
+                    Hébergement
+                  </span>
+
+                  <span className="flex items-center gap-2">
+                    <Hotel
+                      size={19}
+                      className="text-brand-primary"
+                    />
+                    Expérience premium
+                  </span>
+
+                  <span className="flex items-center gap-2">
+                    <CalendarDays
+                      size={19}
+                      className="text-brand-primary"
+                    />
+                    Réservation
+                  </span>
+                </div>
+              </div>
+            </article>
+
+            {/* NOMADE HÔTEL */}
+            <article className="group overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-2xl dark:border-gray-800 dark:bg-[#1a1a1a]">
+              {/* Grande image */}
+              <a
+                href="https://hotel-nomade.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Découvrir le site témoin Nomade Hôtel"
+                className="relative block h-[340px] overflow-hidden sm:h-[420px]"
+              >
+                <img
+                  src="/images/hotel/nomade-hotel-temoin.webp"
+                  alt="Aperçu du site témoin Nomade Hôtel conçu par AlteractWeb"
+                  className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]"
+                />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/15 to-transparent" />
+
+                <div className="absolute left-7 top-7">
+                  <p className="font-kanit text-xs font-medium uppercase tracking-[0.35em] text-white">
+                    Nomade Hôtel
+                  </p>
+
+                  <div className="mt-3 h-px w-14 bg-white/70" />
+                </div>
+
+                <div className="absolute bottom-7 left-7 right-7">
+                  <p className="max-w-xs font-urbanist text-2xl font-medium leading-tight text-white sm:text-3xl">
+                    Une nouvelle façon
+                    <br />
+                    de voyager
+                  </p>
+                </div>
+              </a>
+
+              {/* Informations */}
+              <div className="p-7 sm:p-8">
+                <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="max-w-sm">
+                    <h3 className="font-urbanist text-2xl font-bold sm:text-3xl">
+                      Nomade Hôtel
+                    </h3>
+
+                    <p className="mt-2 font-kanit leading-relaxed text-gray-600 dark:text-gray-400">
+                      Une identité contemporaine pour présenter votre établissement
+                      et donner envie de réserver.
+                    </p>
+                  </div>
+
+                  <a
+                    href="https://hotel-nomade.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-12 flex-shrink-0 items-center justify-center gap-3 rounded-lg border-2 border-brand-primary px-6 py-3 font-kanit font-bold text-brand-primary transition hover:bg-brand-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 dark:focus:ring-offset-brand-dark"
+                  >
+                    Découvrez le site
+                    <ArrowRight size={18} />
+                  </a>
+                </div>
+
+                <div className="mt-7 flex flex-wrap gap-x-7 gap-y-4 border-t border-gray-100 pt-6 font-kanit text-sm text-gray-600 dark:border-gray-800 dark:text-gray-300">
+                  <span className="flex items-center gap-2">
+                    <BedDouble
+                      size={19}
+                      className="text-brand-primary"
+                    />
+                    Hébergement
+                  </span>
+
+                  <span className="flex items-center gap-2">
+                    <Globe2
+                      size={19}
+                      className="text-brand-primary"
+                    />
+                    Expérience
+                  </span>
+
+                  <span className="flex items-center gap-2">
+                    <Sparkles
+                      size={19}
+                      className="text-brand-primary"
+                    />
+                    Identité premium
+                  </span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          {/* Mention finale */}
+          <div className="mx-auto mt-14 max-w-3xl text-center">
+            <div className="flex items-center justify-center gap-4">
+              <span className="h-px w-10 bg-brand-primary/40" />
+
+              <Hotel
+                size={22}
+                className="text-brand-primary"
+              />
+
+              <span className="h-px w-10 bg-brand-primary/40" />
+            </div>
+
+            <p className="mt-4 font-kanit text-xs font-bold uppercase tracking-[0.25em] text-brand-primary">
+              Votre projet, notre savoir-faire
+            </p>
+
+            <p className="mx-auto mt-4 max-w-2xl font-kanit leading-relaxed text-gray-600 dark:text-gray-400">
+              Ces démonstrations sont des exemples : design, contenus,
+              fonctionnalités et parcours de réservation sont adaptés à votre
+              établissement.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* OFFRES */}
       <section className="px-4 py-24 sm:py-28">
