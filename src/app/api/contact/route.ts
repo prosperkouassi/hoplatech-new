@@ -470,7 +470,23 @@ export async function POST(
      * On journalise simplement l'erreur SMTP.
      */
 
+    let emailSent = false;
+    let smtpStatus = "not_attempted";
+    let smtpError: string | null = null;
+    let smtpMessageId: string | null = null;
+
     try {
+      console.log(
+        `Lead #${result.insertId} — vérification SMTP en cours...`
+      );
+
+      await transporter.verify();
+      smtpStatus = "connected";
+
+      console.log(
+        `Lead #${result.insertId} — connexion SMTP vérifiée.`
+      );
+
       /*
        * Valeurs sécurisées pour le contenu HTML.
        */
@@ -511,7 +527,8 @@ export async function POST(
       const safeMessage =
         escapeHtml(message);
 
-      await transporter.sendMail({
+      const emailInfo =
+        await transporter.sendMail({
         /*
          * L'expéditeur doit correspondre
          * au compte SMTP Hostinger.
@@ -868,10 +885,25 @@ Retrouvez également cette demande dans le back-office AlteractWeb.
         `,
       });
 
+      emailSent = true;
+      smtpStatus = "sent";
+      smtpMessageId = emailInfo.messageId ?? null;
+
       console.log(
-        `Notification email envoyée pour le lead #${result.insertId}`
+        `Notification email envoyée pour le lead #${result.insertId}`,
+        {
+          messageId: emailInfo.messageId,
+          accepted: emailInfo.accepted,
+          rejected: emailInfo.rejected,
+          response: emailInfo.response,
+        }
       );
     } catch (emailError) {
+      smtpStatus = "error";
+      smtpError =
+        emailError instanceof Error
+          ? emailError.message
+          : "Erreur SMTP inconnue";
       /*
        * L'enregistrement MySQL a déjà réussi.
        * On ne renvoie donc PAS une erreur au visiteur.
@@ -893,6 +925,12 @@ Retrouvez également cette demande dans le back-office AlteractWeb.
       {
         success: true,
         id: result.insertId,
+        email: {
+          sent: emailSent,
+          status: smtpStatus,
+          messageId: smtpMessageId,
+          error: smtpError,
+        },
       },
       {
         status: 201,
