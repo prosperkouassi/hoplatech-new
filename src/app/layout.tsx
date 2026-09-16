@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   title: "Solutions digitales & logiciels métiers | AlteractWeb",
 
   description:
-    "AlteractWeb conçoit des sites web, boutiques e-commerce, applications mobiles, interfaces UI/UX et logiciels métiers adaptés aux entreprises en Côte d’Ivoire.",
+    "AlteractWeb est une agence digitale en Côte d’Ivoire spécialisée dans la création de sites web, e-commerce, applications mobiles et logiciels métiers.",
 
   applicationName: "AlteractWeb",
 
@@ -95,7 +95,7 @@ const structuredData = {
       url: siteUrl,
 
       description:
-        "Agence de solutions digitales et de logiciels métiers pour les entreprises et organisations en Côte d’Ivoire.",
+        "Agence digitale en Côte d’Ivoire spécialisée dans la création de sites web, applications, solutions digitales et logiciels métiers pour les entreprises et organisations.",
 
       areaServed: {
         "@type": "Country",
