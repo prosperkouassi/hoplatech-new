@@ -2,21 +2,33 @@
 import type { Metadata } from 'next';
 import SolutionsDigitalesPageClient from './SolutionsDigitalesPageClient';
 
+
 export const metadata: Metadata = {
-  title: 'Solutions digitales et création sur mesure | AlteractWeb',
+  title: "Création de site web professionnel en Côte d'Ivoire | AlteractWeb",
+
   description:
-    'Découvrez les solutions digitales AlteractWeb : sites pour hôtels, restaurants et tourisme, sites corporate, e-commerce, applications mobiles et UI/UX Design.',
+    "AlteractWeb accompagne les entreprises en Côte d'Ivoire dans la création de sites web professionnels : vitrines, e-commerce et solutions sur mesure.",
+
   alternates: {
-    canonical: 'https://alteractweb.com/solutions-digitales',
+    canonical: "https://alteractweb.com/solutions-digitales",
   },
+
   openGraph: {
-    title: 'Solutions digitales et création sur mesure | AlteractWeb',
+    title: "Création de site web professionnel en Côte d'Ivoire | AlteractWeb",
     description:
-      'Des expériences web et mobiles conçues pour valoriser votre activité, simplifier les parcours et générer des opportunités.',
-    url: 'https://alteractweb.com/solutions-digitales',
-    type: 'website',
+      "AlteractWeb accompagne les entreprises en Côte d'Ivoire dans la création de sites web professionnels : vitrines, e-commerce et solutions sur mesure.",
+    url: "https://alteractweb.com/solutions-digitales",
+    siteName: "AlteractWeb",
+    locale: "fr_CI",
+    type: "website",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
   },
 };
+
 
 const collectionSchema = {
   '@context': 'https://schema.org',
