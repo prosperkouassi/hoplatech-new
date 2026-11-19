@@ -5,27 +5,25 @@ import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
 
 import {
-  ArrowRight,
   Building2,
-  CheckCircle2,
-  ChevronRight,
-  CircleHelp,
-  Gauge,
   GraduationCap,
   Hotel,
-  Layers3,
+  Lightbulb,
   Map,
-  MessageCircle,
   Palette,
-  School,
-  ShieldCheck,
   ShoppingBag,
   Smartphone,
-  Sparkles,
-  Utensils,
   Users,
-  Workflow,
+  Utensils,
 } from "lucide-react";
+import Image from "next/image";
+import AtelierHeroBackground from "@/components/AtelierHeroBackground";
+import AtelierMobileCarousel from "@/components/AtelierMobileCarousel";
+import AtelierFinalCTA from "@/components/AtelierFinalCTA";
+import AtelierNeedBoards from "@/components/AtelierNeedBoards";
+import AtelierWorkbench from "@/components/AtelierWorkbench";
+import styles from "./atelier.module.css";
+import offerStyles from "./atelier-offers.module.css";
 
 import { solutions } from "@/data/solutions";
 
@@ -40,20 +38,18 @@ const whatsappHref =
 
 export const metadata: Metadata = {
   title: {
-    absolute:
-      "Agence digitale en Côte d’Ivoire | Sites web & logiciels | AlteractWeb",
+    absolute: "Agence web Abidjan | Sites internet & logiciels | AlteractWeb",
   },
 
   description:
-    "AlteractWeb, agence digitale en Côte d’Ivoire, crée des sites web, boutiques e-commerce, applications mobiles et logiciels métiers pour les entreprises.",
+    "Agence web pour les entreprises à Abidjan et en Côte d’Ivoire : création de sites internet, e-commerce, applications et logiciels métiers sur mesure.",
 
   alternates: {
     canonical: siteUrl,
   },
 
   openGraph: {
-    title:
-      "Agence digitale en Côte d’Ivoire | AlteractWeb",
+    title: "Agence web à Abidjan | AlteractWeb",
     description:
       "Création de sites web, e-commerce, applications mobiles, UI/UX et logiciels métiers pour les entreprises en Côte d’Ivoire.",
     url: siteUrl,
@@ -64,8 +60,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title:
-      "Agence digitale en Côte d’Ivoire | AlteractWeb",
+    title: "Agence web à Abidjan | AlteractWeb",
     description:
       "Sites web, applications mobiles et logiciels métiers conçus pour accompagner les entreprises en Côte d’Ivoire.",
   },
@@ -165,8 +160,7 @@ const faqs = [
       "Oui. Selon le projet, nous pouvons vous conseiller, configurer le nom de domaine, mettre en place l’hébergement et assurer la mise en ligne dans un environnement sécurisé.",
   },
   {
-    question:
-      "Les sites et applications sont-ils adaptés aux téléphones ?",
+    question: "Les sites et applications sont-ils adaptés aux téléphones ?",
     answer:
       "Oui. Chaque interface est pensée pour fonctionner sur mobile, tablette et ordinateur. Les parcours, la lisibilité et les performances sont vérifiés sur les différents formats.",
   },
@@ -176,8 +170,7 @@ const faqs = [
       "Oui. La structure des pages, les titres, les métadonnées, les contenus, les performances et le balisage sémantique sont travaillés dès la conception. Le positionnement dépend ensuite de la concurrence et du travail éditorial dans la durée.",
   },
   {
-    question:
-      "Proposez-vous un accompagnement après la mise en ligne ?",
+    question: "Proposez-vous un accompagnement après la mise en ligne ?",
     answer:
       "Oui. Nous préparons la prise en main et pouvons proposer un suivi, une maintenance et des évolutions adaptées aux besoins du projet.",
   },
@@ -192,6 +185,14 @@ const schemaOffers = [
     name: offer.title,
     path: offer.href,
   })),
+  {
+    name: "Maintenance de sites web",
+    path: "/maintenance-site-web",
+  },
+  {
+    name: "Gestion Web Déléguée & TMA",
+    path: "/gestion-web-deleguee",
+  },
   {
     name: "Gestion locative",
     path: "/solutions/gestion-locative",
@@ -215,11 +216,10 @@ const homeSchema = {
       "@id": `${siteUrl}/#webpage`,
       url: siteUrl,
 
-      name:
-        "Agence digitale en Côte d’Ivoire | Sites web & logiciels | AlteractWeb",
+      name: "Agence web Abidjan | Sites internet & logiciels | AlteractWeb",
 
       description:
-        "AlteractWeb est une agence digitale en Côte d’Ivoire spécialisée dans la création de sites web, applications mobiles, UI/UX et logiciels métiers.",
+        "AlteractWeb accompagne les entreprises à Abidjan et en Côte d’Ivoire dans la création de sites internet, applications mobiles, UI/UX et logiciels métiers.",
 
       inLanguage: "fr-CI",
 
@@ -237,14 +237,12 @@ const homeSchema = {
       name: "Solutions et services AlteractWeb",
       numberOfItems: schemaOffers.length,
 
-      itemListElement: schemaOffers.map(
-        (offer, index) => ({
-          "@type": "ListItem",
-          position: index + 1,
-          name: offer.name,
-          url: `${siteUrl}${offer.path}`,
-        })
-      ),
+      itemListElement: schemaOffers.map((offer, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: offer.name,
+        url: `${siteUrl}${offer.path}`,
+      })),
     },
 
     {
@@ -281,26 +279,22 @@ const methodSteps = [
   {
     number: "01",
     title: "Comprendre",
-    text:
-      "Nous analysons votre activité, vos objectifs et les attentes de vos utilisateurs.",
+    text: "Nous analysons votre activité, vos objectifs et les attentes de vos utilisateurs.",
   },
   {
     number: "02",
     title: "Structurer",
-    text:
-      "Nous organisons les contenus, les fonctionnalités et les parcours prioritaires.",
+    text: "Nous organisons les contenus, les fonctionnalités et les parcours prioritaires.",
   },
   {
     number: "03",
     title: "Concevoir",
-    text:
-      "Nous créons une expérience cohérente, performante et fidèle à votre identité.",
+    text: "Nous créons une expérience cohérente, performante et fidèle à votre identité.",
   },
   {
     number: "04",
     title: "Accompagner",
-    text:
-      "Nous préparons la mise en ligne, la prise en main et les futures évolutions.",
+    text: "Nous préparons la mise en ligne, la prise en main et les futures évolutions.",
   },
 ];
 
@@ -310,918 +304,370 @@ const methodSteps = [
 
 export default function HomePage() {
   return (
-    <main className="overflow-x-clip bg-white text-brand-dark dark:bg-brand-dark dark:text-white">
-
+    <main id="contenu" className={styles.atelier}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(homeSchema),
+          __html: JSON.stringify(homeSchema).replace(/</g, "\\u003c"),
         }}
       />
-
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `
-            @keyframes home-fade-up {
-              from { opacity: 0; transform: translate3d(0, 24px, 0); }
-              to { opacity: 1; transform: translate3d(0, 0, 0); }
-            }
-
-            @keyframes home-float {
-              0%, 100% { transform: translate3d(0, 0, 0); }
-              50% { transform: translate3d(0, -12px, 0); }
-            }
-
-            @keyframes home-shimmer {
-              from { background-position: 200% center; }
-              to { background-position: -200% center; }
-            }
-
-            .home-fade-up {
-              animation: home-fade-up .75s cubic-bezier(.22,1,.36,1) both;
-            }
-
-            .home-delay-1 {
-              animation-delay: .1s;
-            }
-
-            .home-delay-2 {
-              animation-delay: .2s;
-            }
-
-            .home-delay-3 {
-              animation-delay: .3s;
-            }
-
-            .home-float {
-              animation: home-float 7s ease-in-out infinite;
-            }
-
-            .home-shimmer {
-              background-size: 200% auto;
-              animation: home-shimmer 7s linear infinite;
-            }
-
-            @media (prefers-reduced-motion: reduce) {
-              .home-fade-up,
-              .home-float,
-              .home-shimmer {
-                animation: none !important;
-              }
-            }
-          `,
-        }}
-      />
-
-      {/* =====================================================
-          HERO
-      ===================================================== */}
-
-      <section className="relative isolate overflow-hidden bg-[#101012] px-4 py-24 text-white sm:py-28 lg:py-32">
-
-        <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_18%_20%,rgba(212,61,73,.28),transparent_32%),radial-gradient(circle_at_82%_72%,rgba(247,64,57,.20),transparent_35%)]" />
-
-        <div className="absolute inset-0 -z-10 opacity-[0.05] [background-image:linear-gradient(rgba(255,255,255,.8)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.8)_1px,transparent_1px)] [background-size:48px_48px]" />
-
-        <div className="container mx-auto grid max-w-7xl items-center gap-16 lg:grid-cols-[1.08fr_.92fr]">
-
-          <div>
-
-            <div className="home-fade-up inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.07] px-4 py-2 backdrop-blur-sm">
-              <Sparkles
-                size={15}
-                className="text-brand-secondary"
-                aria-hidden="true"
-              />
-
-              <span className="font-kanit text-xs font-bold uppercase tracking-[0.17em] text-white/85">
-                Solutions digitales & logiciels métiers
-              </span>
-            </div>
-
-            <h1 className="home-fade-up home-delay-1 mt-6 max-w-4xl font-urbanist text-4xl font-bold leading-[1.05] tracking-[-0.035em] sm:text-5xl lg:text-6xl xl:text-7xl">
-              Le digital qui valorise votre activité et{" "}
-
-              <span className="home-shimmer bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-primary bg-clip-text text-transparent">
-                simplifie votre quotidien
-              </span>
-            </h1>
-
-            <p className="home-fade-up home-delay-2 mt-7 max-w-2xl font-kanit text-lg leading-relaxed text-white/72 sm:text-xl">
-              AlteractWeb, agence digitale en Côte d’Ivoire, conçoit des sites
-              web, des applications et des logiciels métiers adaptés à vos
-              utilisateurs, à vos objectifs et aux réalités de votre activité.
-            </p>
-
-            <div className="home-fade-up home-delay-3 mt-9 flex flex-col gap-4 sm:flex-row">
-
-              <a
-                href="#nos-expertises"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-brand-primary px-7 py-3.5 font-kanit font-bold text-white shadow-[0_14px_35px_rgba(212,61,73,.28)] transition hover:-translate-y-1 hover:bg-red-600"
-              >
-                Explorer nos solutions
-                <ChevronRight
-                  size={18}
-                  aria-hidden="true"
-                />
-              </a>
-
-              <Link
-                href="/contact"
-                className="inline-flex min-h-12 items-center justify-center rounded-xl border border-white/25 bg-white/[0.07] px-7 py-3.5 font-kanit font-bold text-white backdrop-blur-sm transition hover:-translate-y-1 hover:bg-white/[0.12]"
-              >
-                Parler de votre projet
-              </Link>
-            </div>
-
-            <ul className="home-fade-up home-delay-3 mt-9 flex flex-wrap gap-x-6 gap-y-3 font-kanit text-sm text-white/65">
-
-              {[
-                "Conception sur mesure",
-                "Responsive",
-                "SEO intégré",
-                "Accompagnement",
-              ].map((item) => (
-                <li
-                  key={item}
-                  className="flex items-center gap-2"
-                >
-                  <CheckCircle2
-                    size={16}
-                    className="text-brand-secondary"
-                    aria-hidden="true"
-                  />
-
-                  {item}
-                </li>
-              ))}
-
-            </ul>
+      <section className={styles.hero} aria-labelledby="atelier-title">
+        <AtelierHeroBackground />
+        <div className={styles.wrap}>
+          <div className={styles.heroTop}>
+            <span>ALTERACTWEB · L’ATELIER DIGITAL</span>
+            <span>De l’idée à l’usage</span>
           </div>
-
-          <div className="home-float relative mx-auto w-full max-w-xl lg:mx-0">
-
-            <div className="absolute -inset-10 -z-10 rounded-full bg-brand-primary/20 blur-[90px]" />
-
-            <div className="rounded-[2rem] border border-white/15 bg-white/[0.07] p-3 shadow-2xl backdrop-blur-xl sm:p-5">
-
-              <div className="rounded-3xl border border-white/10 bg-[#18181b] p-5 sm:p-7">
-
-                <div className="flex items-center justify-between border-b border-white/10 pb-5">
-
-                  <div>
-                    <p className="font-kanit text-[10px] uppercase tracking-[0.18em] text-white/40">
-                      AlteractWeb
-                    </p>
-
-                    <p className="mt-1 font-urbanist text-lg font-bold">
-                      Votre écosystème digital
-                    </p>
-                  </div>
-
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-primary">
-                    <Layers3
-                      size={22}
-                      aria-hidden="true"
-                    />
-                  </div>
-
-                </div>
-
-                <div className="mt-5 grid gap-4 sm:grid-cols-2">
-
-                  <div className="rounded-2xl bg-white/[0.06] p-5">
-
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-primary/20 text-brand-secondary">
-                      <Smartphone
-                        size={21}
-                        aria-hidden="true"
-                      />
-                    </div>
-
-                    <p className="mt-5 font-urbanist text-lg font-bold">
-                      Solutions digitales
-                    </p>
-
-                    <p className="mt-2 font-kanit text-sm leading-6 text-white/50">
-                      Sites, e-commerce, mobile et UI/UX
-                    </p>
-
-                    <div className="mt-5 h-1.5 overflow-hidden rounded-full bg-white/10">
-                      <div className="h-full w-4/5 rounded-full bg-gradient-to-r from-brand-primary to-brand-secondary" />
-                    </div>
-
-                  </div>
-
-                  <div className="rounded-2xl bg-white/[0.06] p-5">
-
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-white">
-                      <Workflow
-                        size={21}
-                        aria-hidden="true"
-                      />
-                    </div>
-
-                    <p className="mt-5 font-urbanist text-lg font-bold">
-                      Solutions Tech
-                    </p>
-
-                    <p className="mt-2 font-kanit text-sm leading-6 text-white/50">
-                      Gestion locative, scolaire et associative
-                    </p>
-
-                    <div className="mt-5 h-1.5 overflow-hidden rounded-full bg-white/10">
-                      <div className="h-full w-3/5 rounded-full bg-white/45" />
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <div className="mt-4 grid grid-cols-3 gap-3">
-
-                  {[
-                    ["10", "expertises"],
-                    ["2", "pôles"],
-                    ["1", "équipe"],
-                  ].map(([value, label]) => (
-                    <div
-                      key={label}
-                      className="rounded-2xl border border-white/[0.07] bg-white/[0.03] p-4 text-center"
-                    >
-                      <p className="font-urbanist text-xl font-bold">
-                        {value}
-                      </p>
-
-                      <p className="mt-1 font-kanit text-[11px] text-white/40">
-                        {label}
-                      </p>
-                    </div>
-                  ))}
-
-                </div>
+          <div className={styles.heroGrid}>
+            <div className={styles.heroCopy}>
+              <p className={styles.eyebrow}>
+                Expérience française · Ancrage ivoirien
+              </p>
+              <h1 id="atelier-title">
+                Votre agence web
+                <br />à Abidjan, <em>l’atelier</em>
+                <br />
+                de vos idées
+              </h1>
+              <p className={styles.intro}>
+                Des sites qui valorisent votre activité. Des applications et des
+                logiciels qui simplifient votre quotidien. Nous concevons le
+                digital autour de votre entreprise.
+              </p>
+              <div className={styles.actions}>
+                <Link className={styles.primary} href="/contact">
+                  Parlons de votre projet
+                </Link>
+                <a className={styles.secondary} href="#nos-expertises">
+                  Explorer l’atelier
+                </a>
               </div>
+              <p className={styles.heroNote}>
+                Un besoin concret. Un plan clair. Une solution sur mesure.
+              </p>
             </div>
+            <AtelierWorkbench />
           </div>
-
+          <div className={styles.heroFoot}>
+            <span>CONCEVOIR AVEC VOUS. CONSTRUIRE POUR VOUS.</span>
+            <a href="#votre-besoin">La visite commence ici</a>
+          </div>
         </div>
       </section>
-
-      {/* =====================================================
-          REPÈRES
-      ===================================================== */}
 
       <section
-        aria-label="Les engagements AlteractWeb"
-        className="border-b border-gray-200 bg-white px-4 dark:border-gray-800 dark:bg-[#151515]"
+        id="votre-besoin"
+        className={styles.section}
+        aria-labelledby="besoin-title"
       >
-
-        <div className="container mx-auto grid max-w-6xl divide-y divide-gray-200 dark:divide-gray-800 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-
-          {[
-            [
-              "Un besoin, une réponse claire",
-              "Pas de technologie inutile",
-            ],
-            [
-              "Une expérience accessible",
-              "Sur tous les écrans",
-            ],
-            [
-              "Un projet qui peut évoluer",
-              "Sans repartir de zéro",
-            ],
-          ].map(([title, text]) => (
-            <div
-              key={title}
-              className="px-6 py-7 text-center"
-            >
-              <p className="font-urbanist font-bold">
-                {title}
-              </p>
-
-              <p className="mt-1 font-kanit text-sm text-gray-500 dark:text-gray-400">
-                {text}
-              </p>
+        <div className={styles.wrap}>
+          <div className={styles.sectionHeading}>
+            <div>
+              <p className={styles.eyebrow}>Sur la table de travail</p>
+              <h2 id="besoin-title">
+                Tout commence
+                <br />
+                par <em>votre besoin</em>
+              </h2>
             </div>
-          ))}
-
+            <p>
+              Pas besoin de parler technique. Dites-nous ce que vous souhaitez
+              améliorer, nous dessinons la suite avec vous.
+            </p>
+          </div>
+          <AtelierNeedBoards />
         </div>
       </section>
-
-      {/* =====================================================
-          DEUX PÔLES
-      ===================================================== */}
 
       <section
         id="nos-expertises"
-        className="px-4 py-24 sm:py-28"
+        className={`${styles.section} ${styles.services}`}
+        aria-labelledby="expertises-title"
       >
-
-        <div className="container mx-auto max-w-7xl">
-
-          <div className="mx-auto max-w-3xl text-center">
-
-            <span className="font-kanit text-xs font-bold uppercase tracking-[0.18em] text-brand-primary">
-              Nos expertises
-            </span>
-
-            <h2 className="mt-4 font-urbanist text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
-              Deux pôles complémentaires pour faire avancer votre activité
-            </h2>
-
-            <p className="mx-auto mt-6 max-w-2xl font-kanit text-lg leading-relaxed text-gray-600 dark:text-gray-300">
-              Développez votre visibilité et vos ventes, ou simplifiez la
-              gestion quotidienne de votre organisation avec un outil pensé
-              pour votre métier.
-            </p>
-
-          </div>
-
-          <div className="mt-14 grid gap-6 lg:grid-cols-2">
-
-            <article className="group relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-brand-primary to-brand-secondary p-8 text-white sm:p-10">
-
-              <div className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-white/15 blur-3xl" />
-
-              <div className="relative">
-
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/15">
-                  <Sparkles
-                    size={24}
-                    aria-hidden="true"
-                  />
-                </div>
-
-                <p className="mt-8 font-kanit text-xs font-bold uppercase tracking-[0.18em] text-white/70">
-                  7 offres
-                </p>
-
-                <h3 className="mt-3 font-urbanist text-3xl font-bold sm:text-4xl">
-                  Solutions digitales
-                </h3>
-
-                <p className="mt-5 max-w-xl font-kanit text-lg leading-relaxed text-white/80">
-                  Sites web, e-commerce, applications mobiles et design
-                  d’interfaces pour valoriser votre marque et créer des parcours
-                  qui convertissent.
-                </p>
-
-                <Link
-                  href="/solutions-digitales"
-                  className="mt-8 inline-flex min-h-12 items-center gap-2 rounded-xl bg-white px-6 py-3 font-kanit font-bold text-brand-primary transition group-hover:-translate-y-1"
-                >
-                  Voir les solutions digitales
-                  <ArrowRight
-                    size={18}
-                    aria-hidden="true"
-                  />
-                </Link>
-
-              </div>
-            </article>
-
-            <article className="group relative overflow-hidden rounded-[2rem] border border-gray-200 bg-[#111113] p-8 text-white dark:border-gray-800 sm:p-10">
-
-              <div className="absolute -bottom-20 -right-16 h-64 w-64 rounded-full bg-brand-primary/20 blur-3xl" />
-
-              <div className="relative">
-
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10">
-                  <Workflow
-                    size={24}
-                    aria-hidden="true"
-                  />
-                </div>
-
-                <p className="mt-8 font-kanit text-xs font-bold uppercase tracking-[0.18em] text-brand-secondary">
-                  3 logiciels
-                </p>
-
-                <h3 className="mt-3 font-urbanist text-3xl font-bold sm:text-4xl">
-                  Solutions Tech
-                </h3>
-
-                <p className="mt-5 max-w-xl font-kanit text-lg leading-relaxed text-white/65">
-                  Des logiciels de gestion accessibles en ligne pour centraliser
-                  les données, automatiser les tâches et mieux piloter votre
-                  organisation.
-                </p>
-
-                <Link
-                  href="/solutions"
-                  className="mt-8 inline-flex min-h-12 items-center gap-2 rounded-xl border border-white/20 bg-white/[0.08] px-6 py-3 font-kanit font-bold text-white transition group-hover:-translate-y-1 group-hover:bg-white/[0.12]"
-                >
-                  Voir les solutions Tech
-                  <ArrowRight
-                    size={18}
-                    aria-hidden="true"
-                  />
-                </Link>
-
-              </div>
-            </article>
-
-          </div>
-        </div>
-      </section>
-
-      {/* =====================================================
-          SERVICES DIGITAUX
-      ===================================================== */}
-
-      <section className="bg-gray-50 px-4 py-24 dark:bg-[#121212] sm:py-28">
-
-        <div className="container mx-auto max-w-7xl">
-
-          <div className="grid gap-8 lg:grid-cols-[.9fr_1.1fr] lg:items-end">
-
+        <div className={styles.wrap}>
+          <div className={styles.sectionHeading}>
             <div>
-              <span className="font-kanit text-xs font-bold uppercase tracking-[0.18em] text-brand-primary">
-                Création digitale
-              </span>
-
-              <h2 className="mt-4 font-urbanist text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
-                Une offre adaptée à chaque projet
+              <p className={styles.eyebrow}>Les savoir-faire de l’atelier</p>
+              <h2 id="expertises-title">
+                La bonne forme,
+                <br />
+                pour <em>chaque projet</em>
               </h2>
             </div>
-
-            <p className="font-kanit text-lg leading-relaxed text-gray-600 dark:text-gray-300">
-              De la présence corporate au produit mobile, chaque service associe
-              stratégie, expérience utilisateur, design, développement et
-              référencement naturel.
+            <p>
+              Sites internet, applications mobiles ou design d’interface :
+              retrouvez nos solutions digitales, pensées pour vos utilisateurs.
             </p>
-
           </div>
-
-          <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-
-            {digitalOffers.map((offer, index) => {
-              const Icon = offer.icon;
-
-              return (
-                <article
-                  key={offer.href}
-                  className={`group flex min-h-full flex-col rounded-3xl border border-gray-200 bg-white p-7 transition duration-300 hover:-translate-y-1.5 hover:border-brand-primary/30 hover:shadow-[0_22px_60px_rgba(18,18,18,.09)] dark:border-gray-800 dark:bg-[#191919] ${
-                    index === 6
-                      ? "lg:col-span-3"
-                      : ""
-                  }`}
-                >
-
-                  <div className="flex items-start justify-between gap-4">
-
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-red-50 text-brand-primary dark:bg-red-950/30">
-                      <Icon
-                        size={23}
-                        aria-hidden="true"
-                      />
-                    </div>
-
-                    <span className="font-kanit text-[10px] font-bold uppercase tracking-[0.15em] text-gray-400">
-                      {offer.category}
-                    </span>
-
-                  </div>
-
-                  <h3 className="mt-7 font-urbanist text-2xl font-bold transition-colors group-hover:text-brand-primary">
-                    {offer.title}
-                  </h3>
-
-                  <p className="mt-4 flex-grow font-kanit leading-7 text-gray-600 dark:text-gray-400">
-                    {offer.description}
-                  </p>
-
+          <div className={offerStyles.offerGrid}>
+            <AtelierMobileCarousel
+              label="Nos sept expertises"
+              desktopClassName={offerStyles.offerTrack}
+            >
+              {digitalOffers.map((offer) => {
+                const Icon = offer.icon;
+                return (
                   <Link
                     href={offer.href}
-                    aria-label={`Découvrir l’offre ${offer.title}`}
-                    className="mt-7 inline-flex items-center gap-2 font-kanit text-sm font-bold text-brand-primary"
+                    key={offer.href}
+                    className={offerStyles.offer}
                   >
-                    Découvrir l’offre
-
-                    <ArrowRight
-                      size={17}
-                      className="transition-transform group-hover:translate-x-1"
-                      aria-hidden="true"
-                    />
-                  </Link>
-
-                </article>
-              );
-            })}
-
-          </div>
-
-          <div className="mt-10 text-center">
-
-            <Link
-              href="/solutions-digitales"
-              className="inline-flex min-h-12 items-center gap-2 rounded-xl bg-brand-primary px-7 py-3.5 font-kanit font-bold text-white transition hover:bg-red-600"
-            >
-              Comparer toutes nos offres digitales
-
-              <ChevronRight
-                size={18}
-                aria-hidden="true"
-              />
-            </Link>
-
-          </div>
-        </div>
-      </section>
-
-      {/* =====================================================
-          SOLUTIONS TECH
-      ===================================================== */}
-
-      <section className="px-4 py-24 sm:py-28">
-
-        <div className="container mx-auto max-w-7xl">
-
-          <div className="mx-auto max-w-3xl text-center">
-
-            <span className="font-kanit text-xs font-bold uppercase tracking-[0.18em] text-brand-primary">
-              Logiciels métiers
-            </span>
-
-            <h2 className="mt-4 font-urbanist text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
-              Pilotez l’essentiel depuis un seul espace
-            </h2>
-
-            <p className="mx-auto mt-6 max-w-2xl font-kanit text-lg leading-relaxed text-gray-600 dark:text-gray-300">
-              Nos solutions Tech répondent à des besoins opérationnels précis
-              avec des interfaces simples, centralisées et accessibles en ligne.
-            </p>
-
-          </div>
-
-          <div className="mt-14 grid gap-6 lg:grid-cols-3">
-
-            {solutions.map((solution, index) => {
-              const Icon =
-                solutionIcons[solution.slug] ??
-                School;
-
-              const isAvailable =
-                solution.statut?.includes(
-                  "disponible"
-                ) ?? false;
-
-              return (
-                <article
-                  key={solution.slug}
-                  className="group flex min-h-full flex-col rounded-3xl border border-gray-200 bg-white p-7 transition duration-300 hover:-translate-y-1.5 hover:border-brand-primary/30 hover:shadow-[0_22px_60px_rgba(18,18,18,.09)] dark:border-gray-800 dark:bg-[#191919]"
-                >
-
-                  <div className="flex items-center justify-between">
-
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-red-50 text-brand-primary dark:bg-red-950/30">
-                      <Icon
-                        size={23}
-                        aria-hidden="true"
-                      />
+                    <div className={offerStyles.offerTop}>
+                      <Icon size={26} strokeWidth={1.4} aria-hidden="true" />
+                      <span>{offer.category}</span>
                     </div>
-
-                    <span
-                      className={`rounded-full px-3 py-1 font-kanit text-xs font-medium ${
-                        isAvailable
-                          ? "bg-green-50 text-green-700 dark:bg-green-950/30 dark:text-green-400"
-                          : "bg-orange-50 text-orange-700 dark:bg-orange-950/30 dark:text-orange-400"
-                      }`}
-                    >
-                      {solution.statut?.[0] ||
-                        "En développement"}
+                    <h3>{offer.title}</h3>
+                    <p>{offer.description}</p>
+                    <span className={offerStyles.offerLink}>
+                      Découvrir cette expertise
                     </span>
-
-                  </div>
-
-                  <p className="mt-7 font-urbanist text-sm font-bold text-gray-400">
-                    0{index + 1}
-                  </p>
-
-                  <h3 className="mt-2 font-urbanist text-2xl font-bold transition-colors group-hover:text-brand-primary">
-                    {solution.title}
-                  </h3>
-
-                  <p className="mt-4 flex-grow font-kanit leading-7 text-gray-600 dark:text-gray-400">
-                    {solution.accroche}
-                  </p>
-
-                  <Link
-                    href={`/solutions/${solution.slug}`}
-                    aria-label={`Découvrir la solution ${solution.title}`}
-                    className="mt-7 inline-flex items-center gap-2 font-kanit text-sm font-bold text-brand-primary"
-                  >
-                    Découvrir la solution
-
-                    <ArrowRight
-                      size={17}
-                      className="transition-transform group-hover:translate-x-1"
-                      aria-hidden="true"
-                    />
                   </Link>
-
-                </article>
-              );
-            })}
-
+                );
+              })}
+            </AtelierMobileCarousel>
+            <div className={offerStyles.customCard}>
+              <div className={offerStyles.thoughtTop} aria-hidden="true">
+                <span className={offerStyles.question}>
+                  <Lightbulb size={25} strokeWidth={1.3} />
+                  Et si on imaginait
+                  <br />
+                  la suite ?
+                </span>
+                <span className={offerStyles.sticky}>
+                  Votre
+                  <br />
+                  idée ici
+                </span>
+              </div>
+              <h3>
+                Votre idée ne rentre
+                <br />
+                dans aucune case ?
+              </h3>
+              <p>C’est aussi pour cela que l’atelier existe.</p>
+              <Link href="/contact" className={offerStyles.thoughtButton}>
+                Dessinons la suite ensemble
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* =====================================================
-          VALEUR
-      ===================================================== */}
-
-      <section className="bg-[#111113] px-4 py-24 text-white sm:py-28">
-
-        <div className="container mx-auto max-w-7xl">
-
-          <div className="grid gap-8 lg:grid-cols-[1.1fr_.9fr] lg:items-end">
-
+      <section
+        className={`${styles.section} ${styles.software}`}
+        aria-labelledby="logiciels-title"
+      >
+        <div className={styles.wrap}>
+          <div className={styles.sectionHeading}>
             <div>
-              <span className="font-kanit text-xs font-bold uppercase tracking-[0.18em] text-brand-secondary">
-                Notre exigence
-              </span>
-
-              <h2 className="mt-4 max-w-3xl font-urbanist text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
-                Une solution utile aujourd’hui, solide pour demain
+              <p className={styles.eyebrow}>Des outils pour le terrain</p>
+              <h2 id="logiciels-title">
+                Moins de dispersion,
+                <br />
+                <em>plus de maîtrise</em>
               </h2>
             </div>
-
-            <p className="font-kanit text-lg leading-relaxed text-white/60">
-              Nous ne séparons pas l’apparence, l’usage et la technique.
-              Chaque projet doit être clair pour vos utilisateurs, efficace
-              pour votre activité et capable d’évoluer.
+            <p>
+              Nos solutions Tech répondent aux besoins de gestion des agences
+              immobilières, des établissements scolaires et des associations.
             </p>
-
           </div>
+          <div className={styles.softwareGrid}>
+            {solutions.map((solution) => {
+              const Icon = solutionIcons[solution.slug] || Building2;
+              return (
+                <Link
+                  href={`/solutions/${solution.slug}`}
+                  key={solution.slug}
+                  className={styles.softwareCard}
+                >
+                  <Icon size={28} aria-hidden="true" />
+                  <h3>{solution.title}</h3>
+                  <p>{solution.accroche}</p>
+                  <span className={styles.textLink}>Explorer le logiciel</span>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
-          <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+      <section className={styles.section} aria-labelledby="methode-title">
+        <div className={`${styles.wrap} ${styles.methodGrid}`}>
+          <div>
+            <p className={styles.eyebrow}>
+              Du premier trait à la mise en ligne
+            </p>
+            <h2 id="methode-title">
+              Vous suivez
+              <br />
+              <em>la fabrication</em>
+            </h2>
+            <p className={styles.methodIntro}>
+              Vous savez où en est le projet, pourquoi une décision est prise et
+              quelle est la prochaine étape.
+            </p>
+            <Link className={styles.textLink} href="/methode">
+              Découvrir notre méthode
+            </Link>
+            <div className={styles.planStamp} aria-hidden="true">
+              PENSÉ ENSEMBLE
+              <br />
+              <strong>CONÇU SUR MESURE</strong>
+            </div>
+          </div>
+          <ol className={styles.steps}>
+            {methodSteps.map((step) => (
+              <li key={step.number}>
+                <span className={styles.stepPin} aria-hidden="true" />
+                <div>
+                  <h3>{step.title}</h3>
+                  <p>{step.text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
 
+      <section
+        id="prototypes"
+        className={`${styles.section} ${styles.examples}`}
+        aria-labelledby="exemples-title"
+      >
+        <div className={styles.wrap}>
+          <div className={styles.sectionHeading}>
+            <div>
+              <p className={styles.eyebrow}>À voir sur l’établi</p>
+              <h2 id="exemples-title">
+                Des idées devenues
+                <br />
+                <em>des expériences</em>
+              </h2>
+            </div>
+            <p>
+              Explorez nos deux sites témoins hôteliers. Des démonstrations
+              concrètes pour vous projeter dans votre futur site.
+            </p>
+          </div>
+          <div className={styles.examplesGrid}>
             {[
               {
-                icon: Gauge,
-                title: "Performance",
-                text:
-                  "Des interfaces rapides et confortables sur tous les écrans.",
+                title: "Hôtel Plage Cyan",
+                image: "/images/hotel/hotel-plage-temoin.webp",
+                href: "https://hotel-plage-cyan.vercel.app/",
+                text: "Mettre en scène un lieu, ses chambres et son expérience balnéaire.",
               },
               {
-                icon: ShieldCheck,
-                title: "Fiabilité",
-                text:
-                  "Une base technique structurée, sécurisée et maintenable.",
+                title: "Hôtel Nomade",
+                image: "/images/hotel/nomade-hotel-temoin.webp",
+                href: "https://hotel-nomade.vercel.app/",
+                text: "Donner envie de découvrir une destination et préparer son séjour.",
               },
-              {
-                icon: Layers3,
-                title: "Évolutivité",
-                text:
-                  "Une conception capable d’accueillir vos futurs besoins.",
-              },
-              {
-                icon: Users,
-                title: "Accompagnement",
-                text:
-                  "Un interlocuteur pour cadrer, expliquer et faire avancer le projet.",
-              },
-            ].map((item) => {
-              const Icon = item.icon;
-
-              return (
-                <article
-                  key={item.title}
-                  className="rounded-3xl border border-white/10 bg-white/[0.04] p-7"
-                >
-                  <Icon
-                    size={24}
-                    className="text-brand-secondary"
-                    aria-hidden="true"
-                  />
-
-                  <h3 className="mt-7 font-urbanist text-xl font-bold">
-                    {item.title}
-                  </h3>
-
-                  <p className="mt-3 font-kanit leading-7 text-white/55">
-                    {item.text}
-                  </p>
-                </article>
-              );
-            })}
-
-          </div>
-        </div>
-      </section>
-
-      {/* =====================================================
-          MÉTHODE
-      ===================================================== */}
-
-      <section className="px-4 py-24 sm:py-28">
-
-        <div className="container mx-auto max-w-7xl">
-
-          <div className="grid gap-12 lg:grid-cols-[.8fr_1.2fr] lg:gap-20">
-
-            <div className="lg:sticky lg:top-28 lg:self-start">
-
-              <span className="font-kanit text-xs font-bold uppercase tracking-[0.18em] text-brand-primary">
-                Notre méthode
-              </span>
-
-              <h2 className="mt-4 font-urbanist text-3xl font-bold leading-tight sm:text-4xl">
-                Un parcours lisible, du besoin à la mise en ligne
-              </h2>
-
-              <p className="mt-6 font-kanit text-lg leading-relaxed text-gray-600 dark:text-gray-300">
-                Vous savez où en est le projet, pourquoi une décision est prise
-                et quelle est la prochaine étape.
-              </p>
-
-              <Link
-                href="/methode"
-                className="mt-8 inline-flex items-center gap-2 font-kanit font-bold text-brand-primary"
+            ].map((example) => (
+              <a
+                href={example.href}
+                key={example.title}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.example}
               >
-                Découvrir notre méthode
-
-                <ArrowRight
-                  size={18}
-                  aria-hidden="true"
-                />
-              </Link>
-
-            </div>
-
-            <ol className="space-y-5">
-
-              {methodSteps.map((step) => (
-                <li
-                  key={step.number}
-                  className="grid gap-5 rounded-3xl border border-gray-200 bg-white p-7 dark:border-gray-800 dark:bg-[#191919] sm:grid-cols-[auto_1fr] sm:p-8"
-                >
-
-                  <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-red-50 font-urbanist font-bold text-brand-primary dark:bg-red-950/30">
-                    {step.number}
+                <div className={styles.exampleImage}>
+                  <Image
+                    src={example.image}
+                    alt={`Aperçu du site témoin ${example.title}`}
+                    width={900}
+                    height={600}
+                    sizes="(max-width: 700px) 100vw, 50vw"
+                  />
+                </div>
+                <div className={styles.exampleCaption}>
+                  <span className={styles.tag}>Site témoin · Hôtellerie</span>
+                  <h3>{example.title}</h3>
+                  <p>{example.text}</p>
+                  <span className={styles.textLink}>
+                    Visiter la démonstration{" "}
+                    <span className={styles.srOnly}>(nouvel onglet)</span>
                   </span>
-
-                  <div>
-
-                    <h3 className="font-urbanist text-2xl font-bold">
-                      {step.title}
-                    </h3>
-
-                    <p className="mt-3 font-kanit leading-7 text-gray-600 dark:text-gray-400">
-                      {step.text}
-                    </p>
-
-                  </div>
-
-                </li>
-              ))}
-
-            </ol>
+                </div>
+              </a>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* =====================================================
-          FAQ
-      ===================================================== */}
-
-      <section className="bg-gray-50 px-4 py-24 dark:bg-[#121212] sm:py-28">
-
-        <div className="container mx-auto grid max-w-7xl gap-12 lg:grid-cols-[.75fr_1.25fr] lg:gap-20">
-
+      <section className={styles.section} aria-labelledby="suivi-title">
+        <div className={`${styles.wrap} ${styles.support}`}>
           <div>
-
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-red-50 text-brand-primary dark:bg-red-950/30">
-              <CircleHelp
-                size={24}
-                aria-hidden="true"
-              />
-            </div>
-
-            <span className="mt-7 block font-kanit text-xs font-bold uppercase tracking-[0.18em] text-brand-primary">
-              Questions fréquentes
-            </span>
-
-            <h2 className="mt-4 font-urbanist text-3xl font-bold leading-tight sm:text-4xl">
-              Les réponses utiles avant de démarrer
+            <p className={styles.eyebrow}>Après la livraison</p>
+            <h2 id="suivi-title">
+              L’atelier reste
+              <br />
+              <em>à vos côtés</em>
             </h2>
-
-            <p className="mt-6 font-kanit text-lg leading-relaxed text-gray-600 dark:text-gray-300">
-              Votre question n’apparaît pas ici ? Écrivez-nous pour obtenir une
-              réponse adaptée à votre projet.
+            <p>
+              La mise en ligne est une étape. Nous préparons la prise en main et
+              accompagnons la vie de vos outils.
             </p>
+          </div>
+          <div className={styles.supportLinks}>
+            <Link href="/maintenance-site-web">
+              <h3>Maintenance de sites web</h3>
+              <p>Mises à jour, sécurité, sauvegardes et suivi technique.</p>
+              <span className={styles.textLink}>
+                Voir les forfaits de maintenance
+              </span>
+            </Link>
+            <Link href="/gestion-web-deleguee">
+              <h3>Gestion Web Déléguée & TMA</h3>
+              <p>
+                Un accompagnement annuel de vos sites et logiciels, après
+                diagnostic technique.
+              </p>
+              <span className={styles.textLink}>
+                Découvrir l’accompagnement
+              </span>
+            </Link>
+          </div>
+        </div>
+      </section>
 
+      <section
+        className={`${styles.section} ${styles.faq}`}
+        aria-labelledby="faq-title"
+      >
+        <div className={`${styles.wrap} ${styles.faqGrid}`}>
+          <div>
+            <p className={styles.eyebrow}>Avant de pousser la porte</p>
+            <h2 id="faq-title">
+              Vos questions,
+              <br />
+              <em>nos réponses</em>
+            </h2>
             <a
+              className={styles.textLink}
               href={whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 inline-flex min-h-12 items-center gap-2 rounded-xl bg-brand-primary px-6 py-3 font-kanit font-bold text-white transition hover:bg-red-600"
             >
-              <MessageCircle
-                size={18}
-                aria-hidden="true"
-              />
-
-              Poser une question
+              Poser une question sur WhatsApp
             </a>
-
           </div>
-
-          <div className="space-y-4">
-
+          <div>
             {faqs.map((faq) => (
-              <details
-                key={faq.question}
-                className="group rounded-2xl border border-gray-200 bg-white p-6 open:border-brand-primary/25 open:shadow-sm dark:border-gray-800 dark:bg-[#191919]"
-              >
-
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-5 font-urbanist text-lg font-bold marker:content-none">
-
+              <details key={faq.question}>
+                <summary>
                   {faq.question}
-
-                  <span
-                    className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gray-100 text-brand-primary transition-transform group-open:rotate-45 dark:bg-gray-800"
-                    aria-hidden="true"
-                  >
-                    +
-                  </span>
-
+                  <span aria-hidden="true">+</span>
                 </summary>
-
-                <p className="mt-5 border-t border-gray-100 pt-5 font-kanit leading-7 text-gray-600 dark:border-gray-800 dark:text-gray-400">
-                  {faq.answer}
-                </p>
-
+                <p>{faq.answer}</p>
               </details>
             ))}
-
           </div>
         </div>
       </section>
 
-      {/* =====================================================
-          CTA
-      ===================================================== */}
-
-      <section className="px-4 py-24 sm:py-28">
-
-        <div className="container mx-auto max-w-6xl">
-
-          <div className="relative isolate overflow-hidden rounded-[2rem] bg-brand-primary px-6 py-16 text-center text-white shadow-[0_25px_80px_rgba(212,61,73,.22)] sm:px-10 sm:py-20">
-
-            <div className="absolute -left-16 -top-20 -z-10 h-64 w-64 rounded-full bg-white/15 blur-3xl" />
-
-            <div className="absolute -bottom-24 -right-16 -z-10 h-72 w-72 rounded-full bg-black/10 blur-3xl" />
-
-            <span className="font-kanit text-xs font-bold uppercase tracking-[0.18em] text-white/70">
-              Construisons la bonne solution
-            </span>
-
-            <h2 className="mx-auto mt-4 max-w-4xl font-urbanist text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
-              Votre projet mérite mieux qu’une solution générique
-            </h2>
-
-            <p className="mx-auto mt-6 max-w-2xl font-kanit text-lg leading-relaxed text-white/82">
-              Échangeons sur votre activité, vos objectifs et les difficultés
-              que vous souhaitez résoudre.
-            </p>
-
-            <div className="mt-9 flex flex-col justify-center gap-4 sm:flex-row">
-
-              <Link
-                href="/contact"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-white px-8 py-3.5 font-kanit font-bold text-brand-primary transition hover:-translate-y-1 hover:bg-gray-100"
-              >
-                Nous présenter votre projet
-
-                <ArrowRight
-                  size={18}
-                  aria-hidden="true"
-                />
-              </Link>
-
-              <a
-                href={whatsappHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border-2 border-white/30 px-8 py-3.5 font-kanit font-bold text-white transition hover:-translate-y-1 hover:bg-white/10"
-              >
-                <MessageCircle
-                  size={18}
-                  aria-hidden="true"
-                />
-
-                WhatsApp
-              </a>
-
-            </div>
-          </div>
-        </div>
-      </section>
-
+      <AtelierFinalCTA whatsappHref={whatsappHref} />
     </main>
   );
 }

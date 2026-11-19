@@ -1,0 +1,73 @@
+.host {
+  display: contents;
+}
+.track:focus-visible {
+  outline: 2px solid #e63946;
+  outline-offset: 4px;
+}
+.controls {
+  display: none;
+}
+@media (max-width: 700px) {
+  .host {
+    display: block;
+    min-width: 0;
+  }
+  .track {
+    display: flex !important;
+    gap: 16px !important;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 6px;
+    overscroll-behavior-x: contain;
+    padding: 12px 6px 20px;
+    scrollbar-width: thin;
+    scrollbar-color: #e63946 #ddd;
+    -webkit-overflow-scrolling: touch;
+  }
+  .track > * {
+    flex: 0 0 87%;
+    width: 87%;
+    min-width: 0;
+    max-width: none;
+    scroll-snap-align: start;
+    transform: none !important;
+  }
+  .controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 8px 0 0;
+  }
+  .controls button {
+    min-height: 44px;
+    padding: 9px 13px;
+    border: 1px solid #888;
+    border-radius: 5px;
+    background: #f4f6f8;
+    color: #111;
+    font: inherit;
+    font-size: 0.875rem;
+    cursor: pointer;
+  }
+  .controls button:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+  .controls button:focus-visible {
+    outline: 3px solid #e63946;
+    outline-offset: 3px;
+  }
+  .controls span {
+    font-size: 0.875rem;
+    color: inherit;
+    font-variant-numeric: tabular-nums;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    scroll-behavior: auto;
+  }
+}
